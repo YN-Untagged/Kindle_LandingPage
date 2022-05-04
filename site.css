@@ -1,0 +1,158 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding:0;
+    display: block;
+    height: 100%;
+    background-color: rgb(245, 245, 245);
+}
+
+input{
+    border: none;
+}
+
+.container{
+    display: block;
+}
+
+/*Side Navigator*/
+.side_nav{
+    height: 100%;
+    width: 20%;
+    padding-top: 50px;
+    text-align: center;
+    top: 0;
+    left: 0;
+    float: left;
+}
+
+.profile_card{
+    text-align: center;
+    background-color: rgb(241, 223, 202);
+}
+.profile_img
+{
+    border-radius: 15px;
+    width: 100px;
+    padding: 40px;
+}
+
+.nav_links{
+    padding-left: 60px;
+}
+
+/*Main Page*/
+.main_page{
+    height: 100%;
+    width: 80%;
+    float: right;
+    top: 0;
+    right:0;
+}
+
+.top_nav{
+    width:100%;
+    display: inline-block;
+}
+
+.top_nav .logo{
+    width: 30%;
+    float: left;
+}
+
+.nav_tabs{
+    width: 70%;
+    float: right;
+}
+
+.search_bar{
+    width: 150px;
+    border: 3px black;
+    border-radius: 15px;
+    background-color: white;
+    padding: 20px; 
+}
+
+.left{
+    text-align: left;
+}
+
+.right{
+    text-align: right;
+}
+
+.yellow{
+    color: goldenrod;
+}
+
+.reading_info{
+    background-color: rgba(138, 94, 94, 0.993);
+}
+
+.purchased_info{
+    background-color: rgb(45, 79, 107);
+}
+
+.category{
+    background-color: rgba(189, 193, 194, 0.993);
+    align-self: center;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.authors_card{
+    background-color: rgba(245, 245, 245, 0.993);;
+}
+
+.author_pic{
+    border-radius: 50%;
+    height: 80px;
+}
+
+.authors_card, .profile_card, .book, .purchased_info, .reading_info
+{
+    border-radius: 20px;
+}
+
+.book{
+    width: 150px;
+    height: 230px;
+    z-index: 9;
+    position: relative;
+    left: 50px;
+}
+
+.reading_info,.purchased_info{
+    width: 450px;
+    height: 180px;
+    color: white;
+    position:relative;
+    top: -150px;
+    text-align: left;
+}
+
+.reading_info div , .purchased_info div{
+    padding-left: 60px;
+}
+
+.read_card, .new_card{
+    float:left;
+}
+
+.read_card{
+    width: 33.33%;
+}
+
+.new_card{
+    width: 25%;
+}
+
+.row {
+    display:flexbox;
+}
+
+.row::after{
+    display: table;
+    clear:both;
+}
