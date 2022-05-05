@@ -6,23 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="site.css"></style>
+    <script src="site.js" defer></script>
     <title>Document</title>
 </head>
-<body>
+<body onload="LoadDetails();">
     <div class="container">
         <div class="side_nav">
-            <div class="profile_card">
-                <img class="profile_img" src="images/user_images/profile.jpg"/>
+            <div class="profile_card" id="profile-details">
+                <img id="profile-pic" class="profile_img" src="">
                 <div>Welcome Back</div>
-                <h3 id="username">Name Here</h3>
+                <h2 id="username"></h2>
             </div>
 
             <div class="nav_links">
                 <a><i></i>My Kindle Board</a><br>
                 <a><i class="fa fa-box-taped"></i>Collections</a><br>
                 <a><i class="fa fa-bookmark"></i>Saved</a><br>
-                <a><i class="fa fa-user"></i>Profile</a>
-                <a><i></i>Logout</a>
+                <a><i class="fa fa-user"></i>Profile</a><br>
+                <a id="logout" onclick="LogOut();"><i></i>Logout</a>
             </div>
 
             <img class="side_logo" src="images/site_images/"/>
@@ -44,9 +45,9 @@
                     <h2>Books you read last</h2>
                     <div class="row">
                         <div class = "read_card">
-                            <img class="book" src="images/site_images/against_heresies.jpg"/>
+                            <img class="book book_left" src="images/site_images/against_heresies.jpg"/>
                             <div class="reading_info">
-                                <div class="left">
+                                <div class="book_info">
                                     <h3>Against Heresies</h3>
                                     <small>9 Pages <i class="fa fa-dot"></i>Chapter 1 <i class="fa fa-dot"></i> Last Read </small>
                                 </div>
@@ -55,9 +56,9 @@
                         </div>
 
                         <div class = "read_card">
-                            <img class="book" src="images/site_images/the_day_i_met_bigfoot.jpg"/>
+                            <img class="book book_left" src="images/site_images/the_day_i_met_bigfoot.jpg"/>
                             <div class="purchased_info">
-                                <div class="left">
+                                <div class="book_info">
                                     <h3>The Day I Met BigFoot</h3>
                                     <small>New purchase <i class="fa fa-dot"></i>Yet to read</small>
                                 </div>
@@ -65,9 +66,9 @@
                         </div>
 
                         <div class = "read_card">
-                            <img class="book" src="images/site_images/dark_things_I_adore.jpg"/>
+                            <img class="book book_left" src="images/site_images/dark_things_I_adore.jpg"/>
                             <div class="purchased_info">
-                                <div class="left"></div>
+                                <div class="book_info">
                                     <h3>Dark Things I Adore</h3>
                                     <small>New purchase <i class="fa fa-dot"></i>Yet to read</small>
                                 </div>
@@ -76,9 +77,9 @@
                         </div>
 
                         <div class = "read_card">
-                            <img class="book" src="images/site_images/viral.jpeg"/>
+                            <img class="book book_left" src="images/site_images/viral.jpeg"/>
                             <div class="purchased_info">
-                                <div class="left">
+                                <div class="book_info">
                                     <h3>Viral</h3>
                                     <small>New purchase <i class="fa fa-dot"></i>Yet to read</small>
                                 </div>
@@ -87,10 +88,13 @@
                         </div>
 
                         <div class = "read_card">
-                            <img class="book" src="images/site_images/a_brush_with_love.jpg"/>
+                            <img class="book book_left" src="images/site_images/a_brush_with_love.jpg"/>
                             <div class="purchased_info">
-                                <h3>A Brush with Love: A Novel</h3>
-                                <small>New purchase <i class="fa fa-dot"></i>Yet to read</small>
+                                <div class="book_info">
+                                    <h3>A Brush with Love: A Novel</h3>
+                                    <small>New purchase <i class="fa fa-dot"></i>Yet to read</small>
+                                </div>
+                                
                             </div>
                         </div>
 
@@ -106,7 +110,7 @@
                                 <img class="book" src="images/site_images/against_heresies.jpg"/>
                                 <div class="info">
                                     <h3>Against Heresies</h3>
-                                    <small>9 Pages <i class="fa fa-dot"></i>Chapter 1 <i class="fa fa-dot"></i> Last Read </small>
+                                    <small>Irenaeus of Lyons</small><br>
                                     <small class="category">Theology</small>
                                 </div>
                             </div>
@@ -114,8 +118,8 @@
                             <div class = "new_card">
                                 <img class="book" src="images/site_images/the_day_i_met_bigfoot.jpg"/>
                                 <div class="info">
-                                    <h3>The Day I Met BigFoot</h3>
-                                    <small>New purchase <i class="fa fa-dot"></i>Yet to read</small>
+                                    <h3>The Day I Met Big Foot</h3>
+                                    <small>D.L Miller</small><br>
                                     <small class="category">Fairy Tale</small>
                                 </div>
                             </div>
@@ -124,7 +128,7 @@
                                 <img class="book" src="images/site_images/dark_things_I_adore.jpg"/>
                                 <div class="info">
                                     <h3>Dark Things I Adore</h3>
-                                    <small></small>
+                                    <small>Katie Lattari</small>
                                     <small class="category">Thriller</small>
                                 </div>
                             </div>
@@ -133,7 +137,7 @@
                                 <img class="book" src="images/site_images/viral.jpeg"/>
                                 <div class="info">
                                     <h3>Viral</h3>
-                                    <small>Robin Cook</small>
+                                    <small>Robin Cook</small><br>
                                     <small class="category">Mystery</small>
                                 </div>
                             </div>
@@ -142,14 +146,40 @@
                                 <img class="book" src="images/site_images/a_brush_with_love.jpg"/>
                                 <div class="info">
                                     <h3>A Brush with Love: A Novel</h3>
-                                    <small>Mazey Eddings</small>
+                                    <small>Mazey Eddings</small><br>
                                     <small class="category">Fiction</small>
                                 </div>
                             </div>
                         </div>
 
                         <div class="right">
-                            <div>
+                            
+                            <div class="authors_card">
+                                <h6>Famous Authors</h6>
+                                <ul>
+                                    <li>
+                                        <img class="author_pic" src="images/site_images/Rowling.jpg">
+                                        <small>
+                                            <h2>J.K Rowl</h2>
+                                            10 Books
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <img class="author_pic" src="images/site_images/King.jpg">
+                                        <small>
+                                            <h2>Stephen King</h2>
+                                            59 Books
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <img class="author_pic" src="images/site_images/steele.jpeg">
+                                        <small>
+                                            <h2>Danielle Steele</h2>
+                                            179 Books
+                                        </small>
+
+                                    </li>
+                                </ul>
 
                             </div>
                         </div>
@@ -161,3 +191,4 @@
     </div>
 </body>
 </html>
+

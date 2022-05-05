@@ -13,6 +13,8 @@ input{
 
 .container{
     display: block;
+    padding: 50px;
+    
 }
 
 /*Side Navigator*/
@@ -38,7 +40,8 @@ input{
 }
 
 .nav_links{
-    padding-left: 60px;
+    padding: 60px 60px;
+    text-align: left;
 }
 
 /*Main Page*/
@@ -70,7 +73,7 @@ input{
     border: 3px black;
     border-radius: 15px;
     background-color: white;
-    padding: 20px; 
+    padding: 10px; 
 }
 
 .left{
@@ -120,6 +123,9 @@ input{
     height: 230px;
     z-index: 9;
     position: relative;
+}
+
+.book_left{
     left: 50px;
 }
 
@@ -132,8 +138,9 @@ input{
     text-align: left;
 }
 
-.reading_info div , .purchased_info div{
-    padding-left: 60px;
+.book_info{
+    padding-left: 230px;
+    padding-top: 20px;
 }
 
 .read_card, .new_card{
@@ -141,18 +148,23 @@ input{
 }
 
 .read_card{
-    width: 33.33%;
+    width: 460px;
 }
 
 .new_card{
-    width: 25%;
+    width: 200px;
+    text-align: left;
+    padding: 10px;
 }
 
 .row {
-    display:flexbox;
+    display:flex;
+    overflow-y: hidden;
+    min-width: fit-content;
+    flex-direction: row;
 }
 
 .row::after{
-    display: table;
+    display: inline-flex;
     clear:both;
 }
