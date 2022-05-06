@@ -1,4 +1,7 @@
-/* Registration and Login */
+/* Registration and Login*/
+///
+/// Starts here
+///
 
 const profilesUrl = "images/user_images/";
 const booksUrl = "images/site_images/";
@@ -55,7 +58,7 @@ rform.addEventListener('submit', function(event){
             name: rform["name"].value, 
             email: rform["email"].value, 
             phone : rform["phone"].value, 
-            photo: rform["photo"].value, 
+            photo: rform["photo"].files[0].name, 
             password : rform["password"].value 
         }
 
@@ -63,6 +66,8 @@ rform.addEventListener('submit', function(event){
         rform.reset();
         document.getElementById('alert-message').innerHTML = "SignUp successful. Sign In to your account.";
         lform["email"].value = newUser["email"];
+
+        let newFile = new File();
         
     }
     else
@@ -86,10 +91,9 @@ function LoadDetails()
     {
         window.location.href = "login.html"
     }
-    
-    
 }
 
+//Search for user account
 function FindUserAccount( email ){
 
     //find corresponding user account
@@ -111,9 +115,67 @@ function FindUserAccount( email ){
     return false;
 }
 
-/*LogOut*/
+//LogOut
 function LogOut()
 {
     sessionStorage.clear();
     window.location.href = "login.html";
 }
+
+/// Login and registration Ends here
+
+///
+/// Scrollers starts Here
+///
+
+function ScrollToLeft(divToScroll){
+    const elem = document.getElementById(divToScroll);
+    let scroller = elem.scrollLeft;
+    let elemWidth = elem.clientWidth;
+    let scrollableWidth = elem.scrollWidth;
+    let total = scrollableWidth - scroller - elemWidth;
+    
+    if(total != elem.offsetWidth)
+    {
+        elem.scrollLeft += 150;
+    }  
+}
+
+function ScrollToRight(divToScroll) {
+
+    const elem = document.getElementById(divToScroll);
+
+    if( elem.scrollLeft != 0)
+    {
+        elem.scrollLeft -= 150;
+    }
+}
+
+//Scroller ends here
+
+
+let books = [
+    {name : "Against Heresies", cover: "againnst_heresies.jpg", author: "Irenaeus of Lyons", genre: "Theology"},
+    {name : "The Day I Met BigFoot" , cover: "D.L. Miller" , author: "the_day_i_met_bigfoot.jpg", genre: "Fantacy"},
+    {name : "Dark Things I Adore", cover: "dark_things_i_adore.jpg", author: "Katie Lattari", genre: "Thriller"},
+    {name : "Viral", cover: "viral.jpeg", author: "Robin Cook" , genre: "Mystery" },
+    {name : "A Brush with Love: A Novel", cover: , author: "Mazey Eddings", genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: }
+];
+
+let purchasedBooks = [
+    {name : , cover: "", pages: , chapter: , last:},
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: },
+    {name : , cover: , author: , genre: }
+];

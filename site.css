@@ -7,25 +7,34 @@ body{
     background-color: rgb(245, 245, 245);
 }
 
+a {
+    padding: 10px;
+}
+
 input{
     border: none;
+    padding: 5px;
+    width: 300px;
+
 }
 
 .container{
     display: block;
-    padding: 50px;
-    
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 /*Side Navigator*/
 .side_nav{
     height: 100%;
     width: 20%;
-    padding-top: 50px;
+    padding-top: 30px;
+    padding-right: 10px;
     text-align: center;
     top: 0;
     left: 0;
     float: left;
+    position: fixed;
 }
 
 .profile_card{
@@ -44,10 +53,26 @@ input{
     text-align: left;
 }
 
+.nav_links a{
+    padding: 20px;
+    display: block;
+}
+
+.logo_container{
+    bottom: 50px;
+    padding-left: 60px;
+    position: absolute;
+    align-items: center;
+}
+
+.side_logo{
+    width: 200px;
+}
+
 /*Main Page*/
 .main_page{
     height: 100%;
-    width: 80%;
+    width: 75%;
     float: right;
     top: 0;
     right:0;
@@ -60,12 +85,11 @@ input{
 
 .top_nav .logo{
     width: 30%;
-    float: left;
 }
 
 .nav_tabs{
     width: 70%;
-    float: right;
+    text-align: right;
 }
 
 .search_bar{
@@ -76,18 +100,27 @@ input{
     padding: 10px; 
 }
 
+.column{
+    padding-left: 50px;
+}
+
 .left{
-    text-align: left;
+    float: left;
 }
 
 .right{
-    text-align: right;
+    float: right;
 }
 
 .yellow{
-    color: goldenrod;
+    color: gold;
 }
 
+.main_container .top_nav{
+    width: 100%;
+    display: block;
+    position: relative;
+}
 .reading_info{
     background-color: rgba(138, 94, 94, 0.993);
 }
@@ -105,12 +138,22 @@ input{
 }
 
 .authors_card{
-    background-color: rgba(245, 245, 245, 0.993);;
+    background-color: rgba(218, 216, 216, 0.993);
+    width: 300px;
+    padding: 25px;
+}
+
+.authors_card ul{
+    list-style-type: none;
+    margin: 5px;
+}
+.authors_card ul li{
+    display: inline-flex;
 }
 
 .author_pic{
     border-radius: 50%;
-    height: 80px;
+    height: 80px
 }
 
 .authors_card, .profile_card, .book, .purchased_info, .reading_info
@@ -119,7 +162,7 @@ input{
 }
 
 .book{
-    width: 150px;
+    width: 160px;
     height: 230px;
     z-index: 9;
     position: relative;
@@ -133,7 +176,7 @@ input{
     width: 450px;
     height: 180px;
     color: white;
-    position:relative;
+    position: relative;
     top: -150px;
     text-align: left;
 }
@@ -143,28 +186,81 @@ input{
     padding-top: 20px;
 }
 
+.book_info i{
+    font-size: 5px;
+    text-align: center;
+}
+
 .read_card, .new_card{
     float:left;
+    padding: 10px;
 }
 
 .read_card{
     width: 460px;
+    height: 270px;
 }
 
 .new_card{
     width: 200px;
+    height: 380px;
     text-align: left;
-    padding: 10px;
+    padding: 20px;
+}
+
+.info{
+    bottom:0;
+    width: 160px;
+    height: 60px;
+}
+
+.info h3{
+    text-overflow: ellipsis;
+    height: 35px;
+}
+
+.info small{
+    bottom: 0;
+    height: 25px;
 }
 
 .row {
     display:flex;
-    overflow-y: hidden;
-    min-width: fit-content;
+    width: fit-content;
+    overflow-x: hidden;
+    width: 100%;
     flex-direction: row;
+    scroll-behavior: smooth;
 }
 
 .row::after{
     display: inline-flex;
     clear:both;
+}
+
+/*Forms styling*/
+
+.form_container{
+    align-self: center;
+    width: 40%;
+    float: left;
+    border: 5px gold;
+    padding: 20px;
+}
+
+.form_container button , .form_container input{
+    border-radius: 15px;
+    border: 3px solid gold;
+    padding: 10px;
+}
+
+button{
+    width : fit-content;
+    padding: 10px;
+}
+
+label{
+    display:block;
+    width: 100%;
+    padding: 10px;
 }
