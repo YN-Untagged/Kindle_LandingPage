@@ -164,7 +164,7 @@ input{
 .book{
     width: 160px;
     height: 230px;
-    z-index: 9;
+    z-index: 1;
     position: relative;
 }
 
@@ -214,14 +214,24 @@ input{
     height: 60px;
 }
 
-.info h3{
+.info h3, .book_info h3{
+    overflow: hidden;
+    overflow-wrap: break-word;
     text-overflow: ellipsis;
-    height: 35px;
+    height: 40px;
 }
 
 .info small{
     bottom: 0;
     height: 25px;
+}
+
+.btn_left, .btn_right{
+    z-index:10;
+    border: none;
+    background: none;
+    text-decoration: none;
+    position: sticky;
 }
 
 .row {
