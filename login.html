@@ -9,37 +9,54 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="container">
-        <div id="alert-message"></div>
-        <div class="form_container">
-            <form id="loginForm" method="post" action="#">
-                <label>Email</label>
-                <input name= "email" type="email" required/>
-                <label>Password</label>
-                <input name= "password" type="password" required/>
-                <button type="submit">Sign In</button>
-            </form>
+    <div class="container forms">
+        <div >
+            <img src="images/site_images/amazon_kindle_logo.svg"/>
         </div>
-        <div class="form_container">
-            <form id="registerForm" method="post" action="#">
-                <label>Name</label>
-                <input name= "name" type="text" required/>
-                <label>Contact Number</label>
-                <input name= "phone" type="text" required/>
-                <label>Email Address</label>
-                <input name= "email" type="email" required/>
-                <label>Password</label>
-                <input name= "password" type="password" required/>
-                <label>Confirm Password</label>
-                <input name= "cpassword" type="password" required/>
-                <label>Profile Photo</label>
-                <input name="photo" type="file" placeholder="Upload"/>
-                <button type="submit">Sign Up</button>
-            </form>
+        <div id="alert-message"></div>
+        <div class="flip-card" id="card">
+            <div class="flip-card-inner" id="inner">
+              <div class="flip-card-front">
+                <div class="form_container">
+                    <h1>Login</h1>
+                    <form id="loginForm" method="post" action="#">
+                        <label>Email</label>
+                        <input name= "email" type="email" required/>
+                        <label>Password</label>
+                        <input name= "password" type="password" required/><br>
+                        <button type="submit">Sign In</button>
+                        <p>Don't have an account? <a onclick="FlipToLogin()">Register here!</a></p>
+                    </form>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="form_container">
+                    <h1>Register</h1>
+                    <form id="registerForm" method="post" action="#">
+                        <label>Name</label>
+                        <input name= "name" type="text" required/>
+                        <label>Contact Number</label>
+                        <input name= "phone" type="text" required/>
+                        <label>Email Address</label>
+                        <input name= "email" type="email" required/>
+                        <label>Password</label>
+                        <input name= "password" id= "password" type="text" required/>
+                        <label>Confirm Password</label>
+                        <input name= "cpassword" id= "cpassword" type="text" required/>
+                        <div class="" id="password-alert"></div>
+                        <label>Profile Photo</label>
+                        <input name="photo" type="file" placeholder="Upload"/><br>
+                        <button type="submit">Sign Up</button>
+                        <p>Already have an account? <a onclick="FlipToRegister()">Login here!</a></p>
+                    </form>
+                </div>
+              </div>
+            </div>
         </div>
     </div>
 </body>
 </html>
 
-<script src="site.js" defer></script>
+<script src="site.js"></script>
 
+ 

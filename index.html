@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="site.css"></style>
     
     <title>Document</title>
 </head>
 <body id="landing-page" onload="LoadDetails();">
-    <div class="container">
+    <div class="container main">
         <div class="side_nav" id="side-nav">
+            <div class ="panel right"><i class="far fa-times-circle close" onclick="ShowHideSideNav()"></i></div>
             <div class="profile_card" id="profile-details">
                 <img id="profile-pic" class="profile_img" src="">
                 <div>Welcome Back</div>
@@ -48,51 +48,56 @@
             <div class="main_container">
                 <div class="container">
                     <h2>Books you read last</h2>
-                    <button class="btn_right" onclick="ScrollToRight('purchased-books')"><i  class="far fa-arrow-alt-circle-left"></i></button>
-                    <button class="btn_left" onclick="ScrollToLeft('purchased-books')"><i  class="far fa-arrow-alt-circle-right"></i></button>
-                    <div class="row" id="purchased-books">
+                    
+                    <div class="column">
+                        <div class="row" id="purchased-books"></div>
+                        <div class="row scroll_btn p_btns">
+                            <button class="btn_right" onclick="ScrollToRight('purchased-books')"><i  class="far fa-arrow-alt-circle-left fa-2x"></i></button>
+                            <button class="btn_left" onclick="ScrollToLeft('purchased-books')"><i  class="far fa-arrow-alt-circle-right fa-2x"></i></button>
+                        </div>
                         
                     </div>
+                    
                 </div>
 
                 <div class="container">
                     <h2>New Release</h2>
-                    <button class="btn_right" onclick="ScrollToRight('new-books')"><i  class="far fa-arrow-alt-circle-left"></i></button>
-                    <button class="btn_left" onclick="ScrollToLeft('new-books')"><i  class="far fa-arrow-alt-circle-right"></i></button>
-                    <div class="row">
-                        <div class="row left" id="new-books">
-                            
+                    <div class="container panel">
+                        <div class="column">
+                            <div class="row" id="new-books"></div>
+                            <div class="row scroll_btn">
+                                <button class="btn_right" onclick="ScrollToRight('new-books')"><i  class="far fa-arrow-alt-circle-left fa-2x"></i></button>
+                                <button class="btn_left" onclick="ScrollToLeft('new-books')"><i  class="far fa-arrow-alt-circle-right fa-2x"></i></button>
+                            </div>
                         </div>
-
-                        <div class="column right"> 
-                            <div class="authors_card">
-                                <h4>Famous Authors</h4>
-                                <ul>
-                                    <li>
+                        <div class="column"> 
+                            <div class="author_container">
+                                <div class="authors_card">
+                                    <h4>Famous Authors</h4>
+                                    <div class="row">
                                         <img class="author_pic" src="images/site_images/Rowling.jpg">
                                         
                                         <small>
                                             <h4>J.K Rowling</h4>
                                             10 Books
                                         </small>
-                                    </li>
-                                    <li>
+                                    </div>
+                                    <div class="row">
                                         <img class="author_pic" src="images/site_images/King.jpg">
                                         <small>
                                             <h4>Stephen King</h4>
                                             59 Books
                                         </small>
-                                    </li>
-                                    <li>
+                                    </div>
+                                    <div class="row">
                                         <img class="author_pic" src="images/site_images/steele.jpeg">
                                         <small>
                                             <h4>Danielle Steele</h4>
                                             179 Books
                                         </small>
 
-                                    </li>
-                                </ul>
-
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

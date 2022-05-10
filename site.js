@@ -1,18 +1,71 @@
+const profilesUrl = "images/user_images/";
+const booksUrl = "images/site_images/";
+
+
+let userProfiles = [{ name: "Dummy", email: "dummy@gmail.com", phone : "0789345236", photo: "profile.jpg", password :"pass123" }];
+
+const purchasedBooks = [
+    {name : "The Island of Doctor Moreau", cover: "the_Island_Of_DrMoreau.jpg", pages: 95, chapter: 4, read: true},
+    {name : " The Hunger Games", cover: "the_hunger_games.jpg", pages: 25, chapter: 1, read: true},
+    {name : "Against All Odds: Memoirs of Resilience, Determination, and Luck Amidst Hardship for an African Girl Child in Her Passionate Pursuit for Education", cover: "against_all_odds.jpg", pages: 60, chapter: 3, read: true},
+    {name : "Brave New World", cover: "brave_new_world.jpg", pages: 0, chapter: 2, read:true},
+    {name : "Gold Diggers", cover: "gold_diggers.jpg", pages: 0, chapter:0 , read: false},
+    {name : "Before She Disappeared", cover: "before_she_disappeared.jpg", pages: 0, chapter: 0, read:false},
+    {name : "My Life in Full", cover: "my_life_in_full.jpg", pages: 0, chapter: 0, read:false},
+    {name : "The Turnout", cover: "the_turnout.jpg", pages: 0, chapter: 0, read: false},
+    {name : "While Justice Sleeps", cover: "while_justice_sleeps.jpg", pages: 0, chapter: 0, read:false},
+    {name : "Wonder" , cover: "wonder.jpg", pages: 0, chapter: 0, read: false},
+];
+
+const books = [
+    {name : "Against Heresies", cover: "against_heresies.jpg", author: "Irenaeus of Lyons", genre: "Theology"},
+    {name : "The Day I Met BigFoot" , cover: "the_day_i_met_bigfoot.jpg" , author: "D.L. Miller", genre: "Fantacy"},
+    {name : "Dark Things I Adore", cover: "dark_things_i_adore.jpg", author: "Katie Lattari", genre: "Thriller"},
+    {name : "Viral", cover: "viral.jpeg", author: "Robin Cook" , genre: "Mystery" },
+    {name : "A Brush with Love: A Novel", cover: "a_brush_with_love.jpg", author: "Mazey Eddings", genre: " Fiction"},
+    {name : "Chicken Pox", cover: "chicken_pox.jpg", author: "Bernard Demaere", genre: "Children's Liteture"},
+    {name : "The House Across the Lake", cover: "the_house_across_the_lake.jpg", author:"Riley Sager" , genre: "Mystery"},
+    {name : "The Red Palace", cover:"the_red_palace.jpg" , author: "June Hur" , genre:  "Historical Fiction"},
+    {name : "Kaikeyi", cover: "kaikeyi.jpg" , author: "Vaishnavi Patel" , genre: "Fantasy"},
+    {name : "The Book of Cold Cases", cover: "the_book_of_cold_cases.jpg", author: "Simone St. James", genre: "Thriller"}
+];
+
+
 /* Registration and Login*/
 ///
 /// Starts here
 ///
 
-const profilesUrl = "images/user_images/";
-const booksUrl = "images/site_images/";
-
-let userProfiles = new Array();
 let sessionUser;
-let dummyUser = { name: "Dummy", email: "dummy@gmail.com", phone : "0789345236", photo: "profile.jpg", password :"pass123" };
-userProfiles.push(dummyUser);
 
-//Login Fundtion
+//Login Function
 let lform = document.getElementById("loginForm");
+let confirmPass = document.getElementById("cpassword");
+let pass = document.getElementById("password");
+
+confirmPass.addEventListener('focusout', function(){
+    MatchPasswords()
+});
+
+pass.addEventListener('focusout',function(){
+    MatchPasswords()
+});
+
+function MatchPasswords(){
+    let mess = document.getElementById("password-alert");
+    let match = false;
+    
+    if(confirmPass.value !== pass.value)
+    {
+        mess.innerText = "Confirmation password doesn't match password!";
+    }
+    else{
+        mess.innerHTML = "";
+        match = true;
+    }
+
+    return match;
+}
 
 lform.addEventListener('submit', function(event){
     event.preventDefault();
@@ -124,7 +177,7 @@ function ScrollToLeft(divToScroll){
     
     if(total != elem.offsetWidth)
     {
-        elem.scrollLeft += 150;
+        elem.scrollLeft += 200;
     }
 }
 
@@ -134,7 +187,7 @@ function ScrollToRight(divToScroll) {
 
     if( elem.scrollLeft != 0)
     {
-        elem.scrollLeft -= 150;
+        elem.scrollLeft -= 200;
     }
 }
 
@@ -149,31 +202,6 @@ body.addEventListener('load', function(event){
 function LoadBooks(){
 
     const book_count = 10;
-    const purchasedBooks = [
-        {name : "The Island of Doctor Moreau", cover: "the_Island_Of_DrMoreau.jpg", pages: 95, chapter: 4, read: true},
-        {name : " The Hunger Games", cover: "the_hunger_games.jpg", pages: 25, chapter: 1, read: true},
-        {name : "Against All Odds: Memoirs of Resilience, Determination, and Luck Amidst Hardship for an African Girl Child in Her Passionate Pursuit for Education", cover: "against_all_odds.jpg", pages: 60, chapter: 3, read: true},
-        {name : "Brave New World", cover: "brave_new_world.jpg", pages: 0, chapter: 2, read:true},
-        {name : "Gold Diggers", cover: "gold_diggers.jpg", pages: 0, chapter:0 , read: false},
-        {name : "Before She Disappeared", cover: "before_she_disappeared.jpg", pages: 0, chapter: 0, read:false},
-        {name : "My Life in Full", cover: "my_life_in_full.jpg", pages: 0, chapter: 0, read:false},
-        {name : "The Turnout", cover: "the_turnout.jpg", pages: 0, chapter: 0, read: false},
-        {name : "While Justice Sleeps", cover: "while_justice_sleeps.jpg", pages: 0, chapter: 0, read:false},
-        {name : "Wonder" , cover: "wonder.jpg", pages: 0, chapter: 0, read: false},
-    ];
-
-    const books = [
-        {name : "Against Heresies", cover: "against_heresies.jpg", author: "Irenaeus of Lyons", genre: "Theology"},
-        {name : "The Day I Met BigFoot" , cover: "the_day_i_met_bigfoot.jpg" , author: "D.L. Miller", genre: "Fantacy"},
-        {name : "Dark Things I Adore", cover: "dark_things_i_adore.jpg", author: "Katie Lattari", genre: "Thriller"},
-        {name : "Viral", cover: "viral.jpeg", author: "Robin Cook" , genre: "Mystery" },
-        {name : "A Brush with Love: A Novel", cover: "a_brush_with_love.jpg", author: "Mazey Eddings", genre: " Fiction"},
-        {name : "Chicken Pox", cover: "chicken_pox.jpg", author: "Bernard Demaere", genre: "Children's Liteture"},
-        {name : "The House Across the Lake", cover: "the_house_across_the_lake.jpg", author:"Riley Sager" , genre: "Mystery"},
-        {name : "The Red Palace", cover:"the_red_palace.jpg" , author: "June Hur" , genre:  "Historical Fiction"},
-        {name : "Kaikeyi", cover: "kaikeyi.jpg" , author: "Vaishnavi Patel" , genre: "Fantasy"},
-        {name : "The Book of Cold Cases", cover: "the_book_of_cold_cases.jpg", author: "Simone St. James", genre: "Thriller"}
-    ];
 
     //Use only one loop because 10 books on each array
     for(i = 0; i < book_count; i++)
@@ -247,24 +275,32 @@ function LoadDetails()
 ///
 ///Show and hide side navigator
 ///
-/*let nav = document.getElementById("btn");
-nav.click(function(){
-    document.getElementById("side-nav").hide()
-});*/
 
 function ShowHideSideNav(){
     let sidenav = document.getElementById("side-nav");
     let main = document.getElementById("main");
 
-    if(sidenav.hidden)
+    if(sidenav.style.display === "none")
     {
-        sidenav.hidden = false;
+        sidenav.style.display = "block";
         main.style.width = "75%";
     }
     else
     {
-        sidenav.hidden = true;
+        sidenav.style.display = "none"
         main.style.width = "100%";
         
     }
 }
+
+//Show Registration and Login
+function FlipToLogin(){
+    let card = document.getElementById('inner');
+    card.style.transform =  "rotateY(180deg)";
+   
+   }
+   
+   function FlipToRegister(){
+    let card = document.getElementById('inner');
+    card.style.transform =  "rotateY(0deg)";
+   }

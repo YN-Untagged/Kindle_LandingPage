@@ -1,3 +1,7 @@
+:root{
+    --yellow : #ff9900;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -15,7 +19,6 @@ input{
     border: none;
     padding: 5px;
     width: 300px;
-
 }
 
 .container{
@@ -27,7 +30,7 @@ input{
 /*Side Navigator*/
 .side_nav{
     height: 100%;
-    width: 20%;
+    min-width: 20%;
     padding-top: 30px;
     padding-right: 10px;
     text-align: center;
@@ -40,39 +43,43 @@ input{
 .profile_card{
     text-align: center;
     background-color: rgb(241, 223, 202);
+    padding: 25px 25px;
 }
 .profile_img
 {
-    border-radius: 15px;
-    width: 100px;
-    padding: 40px;
+    border-radius: 20px;
+    width: 200px;
 }
 
 .nav_links{
-    padding: 60px 60px;
+    padding: 10px 60px;
     text-align: left;
+    width: 90%;
 }
 
 .nav_links a{
-    padding: 20px;
+    padding: 15px;
     display: block;
 }
 
 .logo_container{
     bottom: 50px;
-    padding-left: 60px;
     position: absolute;
     align-items: center;
+    width: 100%;
 }
 
 .side_logo{
     width: 200px;
 }
+.close{
+    display: none;
+}
 
 /*Main Page*/
 .main_page{
+    width:75%;
     height: 100%;
-    width: 75%;
     float: right;
     top: 0;
     right:0;
@@ -101,7 +108,8 @@ input{
 }
 
 .column{
-    padding-left: 50px;
+    
+    min-width: 25%;
 }
 
 .left{
@@ -113,7 +121,7 @@ input{
 }
 
 .yellow{
-    color: gold;
+    color: var(--yellow);
 }
 
 .main_container .top_nav{
@@ -137,18 +145,23 @@ input{
     padding: 5px;
 }
 
-.authors_card{
-    background-color: rgba(218, 216, 216, 0.993);
-    width: 300px;
-    padding: 25px;
+.author_container{
+    padding-left: 30px;
 }
 
-.authors_card ul{
-    list-style-type: none;
-    margin: 5px;
+.authors_card{
+    background-color: rgba(218, 216, 216, 0.993);
+    width: 450px;
+    padding: 25px 25px;
+} 
+
+.authors_card .row{
+    padding: 10px 10px;
+
 }
-.authors_card ul li{
-    display: inline-flex;
+
+.authors_card .row small{
+    padding-left: 25px;
 }
 
 .author_pic{
@@ -227,14 +240,33 @@ input{
 }
 
 .btn_left, .btn_right{
-    z-index:10;
     border: none;
     background: none;
     text-decoration: none;
-    position: sticky;
 }
 
-.row {
+.scroll_btn{
+    position: relative;
+    z-index:2;
+    top: -50%;
+    width: inherit;
+    justify-content: space-between;
+}
+.p_btns{
+    bottom: 180px;
+}
+
+.btn_left{
+    top: 50%;
+    left: 0;
+}
+
+.btn_right{
+    top: 50%;
+    right: 0;
+}
+
+.panel, .row {
     display:flex;
     width: fit-content;
     overflow-x: hidden;
@@ -243,34 +275,145 @@ input{
     scroll-behavior: smooth;
 }
 
-.row::after{
+.panel, .row::after{
     display: inline-flex;
     clear:both;
 }
 
 /*Forms styling*/
-
-.form_container{
-    align-self: center;
-    width: 40%;
-    float: left;
-    border: 5px gold;
-    padding: 20px;
+.center{
+    text-align: center;
+    align-items: center;
+}
+.forms{
+    text-align: center;
+    width: 80%;
+    padding-top: 50px;
+    background-color: white;
 }
 
 .form_container button , .form_container input{
     border-radius: 15px;
-    border: 3px solid gold;
     padding: 10px;
+}
+
+.form_container a{
+    color: var(--yellow);
 }
 
 button{
     width : fit-content;
     padding: 10px;
+    color: var(--yellow);
+    border: 2px solid var(--yellow);
+    
+}
+
+button:hover {
+    color: white;
+    background-color: var(--yellow);
 }
 
 label{
     display:block;
     width: 100%;
     padding: 10px;
+}
+
+.form_container input{
+    border: 2px solid rgb(245, 245, 245);
+}
+
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+
+  
+
+/********************************************************************************************************************************************/
+/* RESPONSIVE*/
+/*media queries*/
+
+@media only screen and (max-width: 1280px) {
+    .nav_links,.nav_links a{
+        padding: 5px 15px;
+    }
+
+    .column{
+        min-width: 30%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    
+}
+@media only screen and (max-width: 768px) {
+    .panel, .row, .side_nav, .main_page{
+        width: 100%;
+    }
+    
+    .panel {
+        flex-direction: column;
+    }
+
+    .panel:after{
+        display: block;
+    }
+
+    .side_nav{
+        z-index: 3; 
+        background-color: rgb(245, 245, 245);
+        display: none;
+    }
+
+    .nav_links{
+        left: 40%;
+    }
+
+    .close{
+        display: block;
+    }
+    
+}
+
+@media only screen and (max-width: 412px) {
+
+    .main_container{
+        width: 100%;
+        margin: 0;
+    }
+    .row{
+        overflow: scroll;
+    }
+
+    .scroll_btn{
+        display:none;
+    }
+
+    .search_bar{
+        width: 50px;
+    }
+    
 }
