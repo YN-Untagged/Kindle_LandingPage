@@ -89,7 +89,7 @@ lform.addEventListener('submit', function(event){
 
     //Return error message
     message.className = "error_message";
-    message.innerHTML = "<p>You have entered invalid credentials!<br> Enter valid credentials to login or Register new account.</p>";
+    message.innerHTML = '<p>You have entered invalid credentials!<br> Enter valid credentials to login or <a class="yellow" onclick="FlipToRegister();">Click here to Register.</a><p></p>';
     lform.reset();
 
 });
@@ -132,7 +132,7 @@ rform.addEventListener('submit', function(event){
     {
         //User email already used
         message.className = "error_message";
-        message.innerText = "Email address has already been used. Try different email or if you already have an account login.";
+        message.innerHTML = '<p>Email address has already been used. Try different email or if you already have an account <a class="yellow" onclick="FlipToRegister();">Click here to login.</a><p>';
 
     }
 
@@ -311,3 +311,17 @@ function FlipToRegister(){
     document.getElementById('alert-message').innerHTML = "";
     card.style.transform =  "rotateY(0deg)";
 }
+
+function ShowDropDown(){
+    let dropdown = document.getElementById("dropdown-list");
+    if(dropdown.style.display === "none")
+    {
+        dropdown.style.display = "block";
+    }
+    else
+    {
+        dropdown.style.display = "none";
+    }
+        
+}
+  

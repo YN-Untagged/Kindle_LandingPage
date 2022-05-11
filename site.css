@@ -407,7 +407,8 @@ label{
     .panel, .row, .side_nav, .main_page, .flip-card{
         width: 100%;
     }
-    .input{
+    
+    input{
         width: 80%;
     }
     .panel {
@@ -445,16 +446,47 @@ label{
         width: 100%;
         margin: 0;
     }
+
+    .search_bar{
+        display: none;
+    }
     .row{
         overflow: scroll;
+        padding: 0;
     }
 
     .scroll_btn{
         display:none;
     }
 
-    .search_bar{
-        width: 50px;
+    .side_nav{
+        height: 1000px;
+        overflow: scroll;
+
+    }
+    .nav_links a{
+        padding: 5px 5px;
+    }
+    .logo h1, .nav_content{
+        display: none;
+    }
+
+    .logo i,.toggle_btn, .search_bar{
+        display: block;
+    }
+
+    .nav_content{
+        flex-direction: column;
+        position: relative;
+        background-color: gainsboro;
+        right: -100px;
+        text-align: center;
+    }
+    .nav_content{
+        width: 180px;
+    }
+    .nav_content a{
+        min-width: 180px;
     }
     
 }
