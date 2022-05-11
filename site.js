@@ -69,9 +69,10 @@ function MatchPasswords(){
 
 lform.addEventListener('submit', function(event){
     event.preventDefault();
-
+    
     let email = lform["email"].value;
     let found = FindUserAccount(email);
+    let message = document.getElementById('alert-message');
 
     if(found)
     {
@@ -85,12 +86,11 @@ lform.addEventListener('submit', function(event){
             document.getElementById('username').innerText = sessionUser["name"];
         }
     }
-    else
-    {
-        //Return error message
-        document.getElementById('alert-message').innerText = "You have entered invalid credentails!";
-        lform.reset();
-    }
+
+    //Return error message
+    message.className = "error_message";
+    message.innerHTML = "<p>You have entered invalid credentials!<br> Enter valid credentials to login or Register new account.</p>";
+    lform.reset();
 
 });
 
@@ -101,8 +101,15 @@ let rform = document.getElementById("registerForm");
 rform.addEventListener('submit', function(event){
     event.preventDefault();
     
-    let email = lform;//FIX get email field
+    let email = rform["email"].value;
     let found = FindUserAccount(email);
+    let message = document.getElementById('alert-message');
+    let pic = "profile.jpg";
+
+    if(rform["photo"].files.length > 0)
+    {
+        pic = rform["photo"].files[0].name
+    }
 
     if(!found)
     {
@@ -111,23 +118,22 @@ rform.addEventListener('submit', function(event){
             name: rform["name"].value, 
             email: rform["email"].value, 
             phone : rform["phone"].value, 
-            photo: rform["photo"].files[0].name, 
+            photo: pic, 
             password : rform["password"].value 
         }
 
         userProfiles.push(newUser);
         rform.reset();
-        document.getElementById('alert-message').innerHTML = "SignUp successful. Sign In to your account.";
+        message.className = "success_message";
+        message.innerHTML = 'Registration successful. Login to your account <a class="yellow" onclick="FlipToRegister();">Login here!</a> ';
         lform["email"].value = newUser["email"];
-
-        let newFile = new File();
-        
     }
     else
     {
         //User email already used
-        document.getElementById('alert-message').innerText = "Email address has already been used. Try different email or if you already have an account login.";
-        rform.reset();
+        message.className = "error_message";
+        message.innerText = "Email address has already been used. Try different email or if you already have an account login.";
+
     }
 
 });
@@ -144,6 +150,7 @@ function FindUserAccount( email ){
             //user account found
             sessionStorage.setItem("name", userProfiles[i]["name"]);
             sessionStorage.setItem("photo", userProfiles[i]["photo"]);
+            sessionStorage.setItem("password", userProfiles[i]["password"]);
 
             sessionUser = userProfiles[i];
             
@@ -268,7 +275,7 @@ function LoadDetails()
     }
     else
     {
-        window.location.href = "login.html"
+        window.location.href = "login.html";
     }
 }
 
@@ -288,19 +295,19 @@ function ShowHideSideNav(){
     else
     {
         sidenav.style.display = "none"
-        main.style.width = "100%";
-        
+        main.style.width = "100%";   
     }
 }
 
 //Show Registration and Login
+let card = document.getElementById('inner');
+
 function FlipToLogin(){
-    let card = document.getElementById('inner');
-    card.style.transform =  "rotateY(180deg)";
+    document.getElementById('alert-message').innerHTML = "";
+    card.style.transform =  "rotateY(180deg)"; 
+}
    
-   }
-   
-   function FlipToRegister(){
-    let card = document.getElementById('inner');
+function FlipToRegister(){
+    document.getElementById('alert-message').innerHTML = "";
     card.style.transform =  "rotateY(0deg)";
-   }
+}

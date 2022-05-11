@@ -1,14 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
 :root{
     --yellow : #ff9900;
 }
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding:0;
     display: block;
     height: 100%;
     background-color: rgb(245, 245, 245);
+}
+
+h1{
+    font-weight: 800;
+    font-size: 35px;
 }
 
 a {
@@ -23,8 +30,6 @@ input{
 
 .container{
     display: block;
-    padding-top: 50px;
-    padding-bottom: 50px;
 }
 
 /*Side Navigator*/
@@ -86,6 +91,7 @@ input{
 }
 
 .top_nav{
+    padding-top: 15px;
     width:100%;
     display: inline-block;
 }
@@ -109,7 +115,7 @@ input{
 
 .column{
     
-    min-width: 25%;
+    min-width: 29%;
 }
 
 .left{
@@ -129,6 +135,7 @@ input{
     display: block;
     position: relative;
 }
+
 .reading_info{
     background-color: rgba(138, 94, 94, 0.993);
 }
@@ -146,17 +153,19 @@ input{
 }
 
 .author_container{
+    padding-top: 10px;
     padding-left: 30px;
 }
 
 .authors_card{
     background-color: rgba(218, 216, 216, 0.993);
     width: 450px;
-    padding: 25px 25px;
+    height: 430px;
+    padding: 20px 20px;
 } 
 
 .authors_card .row{
-    padding: 10px 10px;
+    padding: 20px 15px;
 
 }
 
@@ -182,7 +191,7 @@ input{
 }
 
 .book_left{
-    left: 50px;
+    left: 40px;
 }
 
 .reading_info,.purchased_info{
@@ -231,7 +240,7 @@ input{
     overflow: hidden;
     overflow-wrap: break-word;
     text-overflow: ellipsis;
-    height: 40px;
+    height: 50px;
 }
 
 .info small{
@@ -287,8 +296,10 @@ input{
 }
 .forms{
     text-align: center;
+    align-content: center;
+    align-items: center;
     width: 80%;
-    padding-top: 50px;
+    height: 80%;
     background-color: white;
 }
 
@@ -306,6 +317,8 @@ button{
     padding: 10px;
     color: var(--yellow);
     border: 2px solid var(--yellow);
+    background-color: white;
+    margin-top: 10px;
     
 }
 
@@ -324,10 +337,23 @@ label{
     border: 2px solid rgb(245, 245, 245);
 }
 
+.form_container small{
+    color: gray;
+}
+
 .flip-card {
-    background-color: transparent;
+    align-self: center ;
+    text-align: center;
+    padding: 20px;
     perspective: 1000px;
-  }
+    margin-left: 25%;
+    margin-top: 2%;
+    min-height: 850px;
+    width: 50%;
+    background-color: white;
+    display: block;
+    border-radius: 15px;
+}
   
   .flip-card-inner {
     position: relative;
@@ -350,7 +376,15 @@ label{
     transform: rotateY(180deg);
   }
 
-  
+.error_message{
+    background-color: rgb(244, 93, 93);
+    color: white;
+}
+
+.success_message{
+    background-color: rgb(144, 233, 144);
+    color:white;
+}
 
 /********************************************************************************************************************************************/
 /* RESPONSIVE*/
@@ -370,10 +404,12 @@ label{
     
 }
 @media only screen and (max-width: 768px) {
-    .panel, .row, .side_nav, .main_page{
+    .panel, .row, .side_nav, .main_page, .flip-card{
         width: 100%;
     }
-    
+    .input{
+        width: 80%;
+    }
     .panel {
         flex-direction: column;
     }
@@ -395,6 +431,11 @@ label{
     .close{
         display: block;
     }
+
+    .flip-card{
+        margin: 0 0;
+    }
+   
     
 }
 

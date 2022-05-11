@@ -9,14 +9,13 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="container forms">
-        <div >
+    <div class="flip-card" id="card">
+        <div>
             <img src="images/site_images/amazon_kindle_logo.svg"/>
         </div>
         <div id="alert-message"></div>
-        <div class="flip-card" id="card">
-            <div class="flip-card-inner" id="inner">
-              <div class="flip-card-front">
+        <div class="flip-card-inner" id="inner">
+            <div class="flip-card-front">
                 <div class="form_container">
                     <h1>Login</h1>
                     <form id="loginForm" method="post" action="#">
@@ -25,32 +24,32 @@
                         <label>Password</label>
                         <input name= "password" type="password" required/><br>
                         <button type="submit">Sign In</button>
-                        <p>Don't have an account? <a onclick="FlipToLogin()">Register here!</a></p>
+                        <p>Don't have an account?<a onclick="FlipToLogin()">Register here!</a></p>
                     </form>
                 </div>
-              </div>
-              <div class="flip-card-back">
+            </div>
+            <div class="flip-card-back">
                 <div class="form_container">
                     <h1>Register</h1>
                     <form id="registerForm" method="post" action="#">
                         <label>Name</label>
                         <input name= "name" type="text" required/>
                         <label>Contact Number</label>
-                        <input name= "phone" type="text" required/>
+                        <input name= "phone" type ="tel" pattern="[+][0-9]{10}" required/>
+                        <br><small>Format: +2712345678</small>
                         <label>Email Address</label>
                         <input name= "email" type="email" required/>
                         <label>Password</label>
-                        <input name= "password" id= "password" type="text" required/>
+                        <input name= "password" id= "password" type="password" required/>
                         <label>Confirm Password</label>
-                        <input name= "cpassword" id= "cpassword" type="text" required/>
-                        <div class="" id="password-alert"></div>
+                        <input name= "cpassword" id= "cpassword" type="password" required/>
+                        <br><small style="color: red;" id="password-alert"></small>
                         <label>Profile Photo</label>
                         <input name="photo" type="file" placeholder="Upload"/><br>
                         <button type="submit">Sign Up</button>
-                        <p>Already have an account? <a onclick="FlipToRegister()">Login here!</a></p>
+                        <p>Already have an account?<a onclick="FlipToRegister()">Login here!</a></p>
                     </form>
                 </div>
-              </div>
             </div>
         </div>
     </div>
