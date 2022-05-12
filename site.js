@@ -103,7 +103,7 @@ rform.addEventListener('submit', function(event){
 
     let message = document.getElementById('alert-message');
 
-    if(this["password"].value !== this["cpassword"]){
+    if(rform["password"].value !== rform["cpassword"].value){
         message.innerHTML = "Confirmation password doesn't match password. Please enter matching passwords.";
         return;
     }
