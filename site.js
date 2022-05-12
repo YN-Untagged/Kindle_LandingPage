@@ -100,15 +100,21 @@ let rform = document.getElementById("registerForm");
 
 rform.addEventListener('submit', function(event){
     event.preventDefault();
+
+    let message = document.getElementById('alert-message');
+
+    if(this["password"].value !== this["cpassword"]){
+        message.innerHTML = "Confirmation password doesn't match password. Please enter matching passwords.";
+        return;
+    }
     
     let email = rform["email"].value;
     let found = FindUserAccount(email);
-    let message = document.getElementById('alert-message');
     let pic = "profile.jpg";
 
     if(rform["photo"].files.length > 0)
     {
-        pic = rform["photo"].files[0].name
+        pic = rform["photo"].files[0].name;
     }
 
     if(!found)
@@ -314,13 +320,18 @@ function FlipToRegister(){
 
 function ShowDropDown(){
     let dropdown = document.getElementById("dropdown-list");
+    let icon = document.getElementById("toggle-icon");
+
     if(dropdown.style.display === "none")
     {
         dropdown.style.display = "block";
+        icon.className = "fas fa-times fa-2x";
+        
     }
     else
     {
         dropdown.style.display = "none";
+        icon.className = "fas fa-bars fa-2x";
     }
         
 }

@@ -94,10 +94,17 @@ input{
     padding-top: 15px;
     width:100%;
     display: inline-block;
+    position: fixed;
+    z-index:3;
+    background-color: rgb(245, 245, 245);
 }
 
 .top_nav .logo{
     width: 30%;
+}
+
+.top_nav .logo i{
+    display: none;
 }
 
 .nav_tabs{
@@ -111,6 +118,10 @@ input{
     border-radius: 15px;
     background-color: white;
     padding: 10px; 
+}
+
+.links :hover, .links:focus{
+    color: var(--yellow)
 }
 
 .column{
@@ -128,6 +139,10 @@ input{
 
 .yellow{
     color: var(--yellow);
+}
+
+.main_container{
+    margin-top: 150px;
 }
 
 .main_container .top_nav{
@@ -390,6 +405,14 @@ label{
 /* RESPONSIVE*/
 /*media queries*/
 
+@media only screen and (min-width:1025px){
+    .nav_content{
+        display: block;
+        position: fixed;
+        right: 10px;
+    }
+}
+
 @media only screen and (max-width: 1280px) {
     .nav_links,.nav_links a{
         padding: 5px 15px;
@@ -400,27 +423,63 @@ label{
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width:1024px) {
+   .nav_tabs .toggle_btn, .links span{
+       display: block;
+   }
+
+    .nav_content, .icon{
+        display: none;
+    }
+
+    .nav_content{
+        flex-direction: column;
+        position: fixed;
+        background-color: gainsboro;
+        right: -10px;
+        text-align: center;
+        padding: 10px 10px;
+        z-index: 2;
+        width: 180px;
+    }
+    
+    .links{
+        min-width: 180px;
+    }
+
+    .side_nav{
+        height: 1000px;
+        overflow: scroll;
+
+    }
+    .nav_links a{
+        padding: 10px 10px;
+    }
+
+    input{
+        width: 70%;
+    }
     
 }
 @media only screen and (max-width: 768px) {
+    .logo h1, .nav_content, .icon{
+        display: none;
+    }
+
+    .top_nav .logo i, .toggle_btn, .search_bar, .nav_content span, .panel:after{
+        display: block;
+    }
+
     .panel, .row, .side_nav, .main_page, .flip-card{
         width: 100%;
     }
-    
-    input{
-        width: 80%;
-    }
+
     .panel {
         flex-direction: column;
     }
 
-    .panel:after{
-        display: block;
-    }
-
     .side_nav{
-        z-index: 3; 
+        z-index: 4; 
         background-color: rgb(245, 245, 245);
         display: none;
     }
@@ -429,22 +488,29 @@ label{
         left: 40%;
     }
 
-    .close{
+    .close, .nav_content{
         display: block;
     }
 
     .flip-card{
         margin: 0 0;
     }
-   
-    
+    .nav_links a{
+        padding: 5px 5px;
+    }
+
+    input{
+        width: 80%;
+    }
+    .main_container{
+        margin-top: 80px;
+    }
 }
 
 @media only screen and (max-width: 412px) {
 
     .main_container{
-        width: 100%;
-        margin: 0;
+        width: 100%
     }
 
     .search_bar{
@@ -458,35 +524,4 @@ label{
     .scroll_btn{
         display:none;
     }
-
-    .side_nav{
-        height: 1000px;
-        overflow: scroll;
-
-    }
-    .nav_links a{
-        padding: 5px 5px;
-    }
-    .logo h1, .nav_content{
-        display: none;
-    }
-
-    .logo i,.toggle_btn, .search_bar{
-        display: block;
-    }
-
-    .nav_content{
-        flex-direction: column;
-        position: relative;
-        background-color: gainsboro;
-        right: -100px;
-        text-align: center;
-    }
-    .nav_content{
-        width: 180px;
-    }
-    .nav_content a{
-        min-width: 180px;
-    }
-    
 }
