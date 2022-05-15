@@ -6,7 +6,7 @@ let userProfiles = [{ name: "Dummy", email: "dummy@gmail.com", phone : "07893452
 
 const purchasedBooks = [
     {name : "The Island of Doctor Moreau", cover: "the_Island_Of_DrMoreau.jpg", pages: 95, chapter: 4, read: true},
-    {name : " The Hunger Games", cover: "the_hunger_games.jpg", pages: 25, chapter: 1, read: true},
+    {name : " The Hunger Games", cover: "The_Hunger_Games.jpg", pages: 25, chapter: 1, read: true},
     {name : "Against All Odds: Memoirs of Resilience, Determination, and Luck Amidst Hardship for an African Girl Child in Her Passionate Pursuit for Education", cover: "against_all_odds.jpg", pages: 60, chapter: 3, read: true},
     {name : "Brave New World", cover: "brave_new_world.jpg", pages: 0, chapter: 2, read:true},
     {name : "Gold Diggers", cover: "gold_diggers.jpg", pages: 0, chapter:0 , read: false},
@@ -20,7 +20,7 @@ const purchasedBooks = [
 const books = [
     {name : "Against Heresies", cover: "against_heresies.jpg", author: "Irenaeus of Lyons", genre: "Theology"},
     {name : "The Day I Met BigFoot" , cover: "the_day_i_met_bigfoot.jpg" , author: "D.L. Miller", genre: "Fantacy"},
-    {name : "Dark Things I Adore", cover: "dark_things_i_adore.jpg", author: "Katie Lattari", genre: "Thriller"},
+    {name : "Dark Things I Adore", cover: "dark_things_I_adore.jpg", author: "Katie Lattari", genre: "Thriller"},
     {name : "Viral", cover: "viral.jpeg", author: "Robin Cook" , genre: "Mystery" },
     {name : "A Brush with Love: A Novel", cover: "a_brush_with_love.jpg", author: "Mazey Eddings", genre: " Fiction"},
     {name : "Chicken Pox", cover: "chicken_pox.jpg", author: "Bernard Demaere", genre: "Children's Liteture"},
@@ -80,10 +80,6 @@ lform.addEventListener('submit', function(event){
         {
             //redirect to landing page
             window.location.href = "index.html";
-
-            //load user info
-            document.getElementById('profile-pic').src = profilesUrl + sessionUser["photo"];
-            document.getElementById('username').innerText = sessionUser["name"];
         }
     }
 
@@ -110,15 +106,23 @@ rform.addEventListener('submit', function(event){
     
     let email = rform["email"].value;
     let found = FindUserAccount(email);
-    let pic = "profile.jpg";
-
-    if(rform["photo"].files.length > 0)
-    {
-        pic = rform["photo"].files[0].name;
-    }
+    let pic = profilesUrl + "profile.jpg";
+    let reader = new FileReader();
 
     if(!found)
     {
+        //Save Profile picture if found
+        if(rform["photo"].files.length > 0)
+        {
+            reader.readAsDataURL(rform["photo"].files[0]); 
+
+            reader.onload = GetPicSrc();
+            
+            function GetPicSrc(){
+                pic = reader.result;
+            };
+        }
+
         //Add user
         let newUser = {
             name: rform["name"].value, 
@@ -272,7 +276,7 @@ function LoadDetails()
     if("name" in sessionStorage)
     {
         //load user info
-        document.getElementById('profile-pic').src = profilesUrl + sessionStorage.getItem("photo");
+        document.getElementById('profile-pic').src = sessionStorage.getItem("photo");
         document.getElementById('username').innerText = sessionStorage.getItem("name");
 
         //load books

@@ -89,19 +89,26 @@ input{
     float: right;
     top: 0;
     right:0;
+    padding-left: 35px;
 }
 
 .top_nav{
-    padding-top: 15px;
     width:100%;
-    display: inline-block;
+    height: 80px;
+    display: inline-flex;
     position: fixed;
     z-index:3;
     background-color: rgb(245, 245, 245);
+    padding : 0 15px;
 }
 
 .top_nav .logo{
     width: 30%;
+    margin: 0 0;
+}
+
+.logo{
+    padding: 0 0;
 }
 
 .top_nav .logo i{
@@ -109,8 +116,9 @@ input{
 }
 
 .nav_tabs{
-    width: 70%;
+    width: 65%;
     text-align: right;
+    padding-top: 30px;
 }
 
 .search_bar{
@@ -143,13 +151,8 @@ input{
 }
 
 .main_container{
-    margin-top: 150px;
-}
-
-.main_container .top_nav{
-    width: 100%;
-    display: block;
-    position: relative;
+    margin-top: 100px;
+    padding: 0 0 10px 15px;
 }
 
 .reading_info{
@@ -172,7 +175,7 @@ input{
 
 .author_container{
     padding-top: 10px;
-    padding-left: 30px;
+    /*padding-left: 30px;*/
 }
 
 .authors_card{
@@ -300,10 +303,16 @@ input{
 .panel, .row {
     display:flex;
     width: fit-content;
-    overflow-x: hidden;
+    overflow-x: scroll;
     width: 100%;
     flex-direction: row;
     scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; /*Firefox*/
+}
+
+.panel::-webkit-scrollbar,.row::-webkit-scrollbar {
+    display: none;
 }
 
 .panel, .row::after{
@@ -412,11 +421,30 @@ label{
 /* RESPONSIVE*/
 /*media queries*/
 
-@media (min-width:1280px){
+@media (min-width: 1280px){
     .nav_content{
         display: block;
         position: fixed;
         right: 10px;
+    }
+}
+
+@media (max-width: 1400px){
+    
+    .nav_links{
+        padding : 5px 40px;
+    }
+
+    .nav_links a{
+        padding: 2px 2px;
+    }
+
+    .logo_container{
+        bottom: 10px;
+    }
+
+    .profile_img{
+        width: 80px;
     }
 }
 
