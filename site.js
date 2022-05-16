@@ -2,7 +2,7 @@ const profilesUrl = "images/user_images/";
 const booksUrl = "images/site_images/";
 
 
-let userProfiles = [{ name: "Dummy", email: "dummy@gmail.com", phone : "0789345236", photo: "profile.jpg", password :"pass123" }];
+let userProfiles = [{ name: "Dummy", email: "dummy@gmail.com", phone : "+2789345236", photo: profilesUrl + "profile.jpg", password :"pass123" }];
 
 const purchasedBooks = [
     {name : "The Island of Doctor Moreau", cover: "the_Island_Of_DrMoreau.jpg", pages: 95, chapter: 4, read: true},
@@ -119,10 +119,10 @@ rform.addEventListener('submit', function(event){
             reader.onload = GetPicSrc();
             
             function GetPicSrc(){
-                pic = reader.result;
+                if(reader.result)
+                    pic = reader.result;
             };
         }
-
         //Add user
         let newUser = {
             name: rform["name"].value, 
@@ -209,12 +209,6 @@ function ScrollToRight(divToScroll) {
 }
 
 //Scroller ends here
-
-/*let body = document.getElementById("landing-page");
-
-body.addEventListener('load', function(event){
-    LoadDetails();
-});*/
 
 function LoadBooks(){
 
@@ -330,7 +324,6 @@ function ShowDropDown(){
     {
         dropdown.style.display = "block";
         icon.className = "fas fa-times fa-2x";
-        
     }
     else
     {
@@ -339,4 +332,3 @@ function ShowDropDown(){
     }
         
 }
-  

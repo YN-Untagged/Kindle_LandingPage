@@ -35,8 +35,8 @@
                         <label>Name</label>
                         <input name= "name" type="text" required/>
                         <label>Contact Number</label>
-                        <input name= "phone" type ="tel" pattern="[+][0-9]{10}" required/>
-                        <br><small>Format: +2712345678</small>
+                        <input name= "phone" type ="tel" pattern="[+][0-9]{11}" required/>
+                        <br><small>Format: +27123456789</small>
                         <label>Email Address</label>
                         <input name= "email" type="email" required/>
                         <label>Password</label>
@@ -45,7 +45,7 @@
                         <input name= "cpassword" id= "cpassword" type="password" required/>
                         <br><small style="color: red;" id="password-alert"></small>
                         <label>Profile Photo</label>
-                        <input name="photo" type="file" placeholder="Upload" accept="image/*"/><br>
+                        <input name="photo" id="photo" type="file" placeholder="Upload" accept="image/*"/><br>
                         <button type="submit" id="sign-up">Sign Up</button>
                         <p>Already have an account?<a onclick="FlipToRegister()">Login here!</a></p>
                     </form>

@@ -55,6 +55,7 @@ input{
 {
     border-radius: 20px;
     width: 200px;
+    height: 200px;
 }
 
 .nav_links{
@@ -94,7 +95,6 @@ input{
 
 .top_nav{
     width:100%;
-    height: 80px;
     display: inline-flex;
     position: fixed;
     z-index:3;
@@ -279,14 +279,15 @@ input{
     height: 50px;
 }
 
-.scroll_btn{
+.scroll_btn, .p_scroll_btn{
     position: relative;
     z-index:2;
     top: -50%;
     width: inherit;
     justify-content: space-between;
 }
-.p_btns{
+
+.p_scroll_btn{
     bottom: 180px;
 }
 
@@ -445,6 +446,7 @@ label{
 
     .profile_img{
         width: 80px;
+        height: 90px;
     }
 }
 
@@ -507,7 +509,7 @@ label{
         display: none;
     }
 
-    .top_nav .logo i, .toggle_btn, .search_bar, .nav_content span, .panel:after{
+    .logo i, .toggle_btn, .search_bar, .nav_content span, .panel:after{
         display: block;
     }
 
@@ -546,6 +548,10 @@ label{
     .main_container{
         margin-top: 80px;
     }
+
+    .scroll_btn{
+        top: 100%;
+    }
 }
 
 @media (max-width: 412px) {
@@ -559,7 +565,7 @@ label{
         padding: 0;
     }
 
-    .scroll_btn{
+    .scroll_btn, .p_scroll_btn{
         display:none;
     }
 }
