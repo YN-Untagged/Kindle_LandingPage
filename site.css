@@ -70,10 +70,11 @@ input{
 }
 
 .logo_container{
-    bottom: 50px;
-    position: absolute;
+    bottom: 30px;
+    position: relative;
     align-items: center;
     width: 100%;
+    padding-top: 40px;
 }
 
 .side_logo{
@@ -100,19 +101,27 @@ input{
     z-index:3;
     background-color: rgb(245, 245, 245);
     padding : 0 15px;
+    height: 110px
 }
 
 .top_nav .logo{
     width: 30%;
+    height:fit-content;
     margin: 0 0;
+    padding: 5px 0 0 0;
 }
 
-.logo{
+.logo h1{
     padding: 0 0;
 }
 
-.top_nav .logo i{
+.logo i{
     display: none;
+    padding : 0 15px;
+}
+
+.toggle_btn{
+    padding-top: 20px;
 }
 
 .nav_tabs{
@@ -151,8 +160,8 @@ input{
 }
 
 .main_container{
-    margin-top: 100px;
-    padding: 0 0 10px 15px;
+    margin-top: 150px;
+    padding: 10px 0 10px 15px;
 }
 
 .reading_info{
@@ -412,6 +421,7 @@ label{
   }
   
   .flip-card-back {
+    background-color: white;
     transform: rotateY(180deg);
   }
 
@@ -458,7 +468,7 @@ label{
     }
 }
 
-@media (max-width: 1400px){
+@media (max-width: 1400px), (max-height: 895px){
     
     .nav_links{
         padding : 5px 40px;
@@ -473,8 +483,8 @@ label{
     }
 
     .profile_img{
-        width: 80px;
-        height: 90px;
+        width: 100px;
+        height: 100px;
     }
 }
 
@@ -533,7 +543,7 @@ label{
     
 }
 @media (max-width: 1023px) {
-    .logo h1, .nav_content, .icon{
+    .logo .heading, .nav_content, .icon{
         display: none;
     }
 
@@ -574,11 +584,11 @@ label{
         width: 80%;
     }
     .main_container{
-        margin-top: 80px;
+        margin-top: 100px;
     }
 
     .scroll_btn{
-        top: 100%;
+        bottom: 50%;
     }
 }
 

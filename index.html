@@ -12,7 +12,7 @@
 <body id="landing-page" onload="LoadDetails();">
     <div class="container main">
         <div class="side_nav" id="side-nav">
-            <div class ="right"><i class="far fa-times-circle close" onclick="ShowHideSideNav()"></i></div>
+            <div class ="right"><i class="far fa-times-circle fa-2x close" onclick="ShowHideSideNav()"></i></div>
             <div class="profile_card" id="profile-details">
                 <img id="profile-pic" class="profile_img" src="" alt="profile image">
                 <div>Welcome Back</div>
@@ -35,7 +35,9 @@
         </div>
         <div class="main_page" id="main">
             <nav class = "top_nav">
-                <div class = "logo left"><h1><i class="fab fa-kickstarter yellow fa-3x"></i>Kindle<span class="yellow">.</span></h1></div>
+                <div class = "logo">
+                    <h1><i class="fab fa-kickstarter yellow fa-2x"></i><span class="heading">Kindle<span class="yellow">.</span></span></h1>
+                </div>
                 <div class="nav_tabs right">
                     <a onclick="ShowDropDown();" class="toggle_btn" hidden><i class="fas fa-bars fa-2x" id="toggle-icon"></i></a>
                     <div class="nav_content" id="dropdown-list">
@@ -45,7 +47,6 @@
                         <a class ="links" onclick="ShowHideSideNav()"><span hidden> Main Menu</span><i class="fas fa-th-large icon"></i></a>
                     </div>
                 </div>
-                
             </nav>
 
             <div class="main_container">
@@ -57,8 +58,7 @@
                         <div class="row p_scroll_btn">
                             <button class="btn_right" onclick="ScrollToRight('purchased-books')"><i  class="far fa-arrow-alt-circle-left fa-2x"></i></button>
                             <button class="btn_left" onclick="ScrollToLeft('purchased-books')"><i  class="far fa-arrow-alt-circle-right fa-2x"></i></button>
-                        </div>
-                        
+                        </div>  
                     </div>
                     
                 </div>
@@ -98,7 +98,6 @@
                                             <h4>Danielle Steele</h4>
                                             179 Books
                                         </small>
-
                                     </div>
                                 </div>
                             </div>
