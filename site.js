@@ -98,6 +98,7 @@ rform.addEventListener('submit', function(event){
     event.preventDefault();
 
     let message = document.getElementById('alert-message');
+    document.getElementById("loader-message").style.display = 'none';
 
     if(rform["password"].value !== rform["cpassword"].value){
         message.innerHTML = "Confirmation password doesn't match password. Please enter matching passwords.";
@@ -107,7 +108,6 @@ rform.addEventListener('submit', function(event){
     let email = rform["email"].value;
     let found = FindUserAccount(email);
     let pic = profilesUrl + "profile.jpg";
-    let reader = new FileReader();
 
     if(!found)
     {
