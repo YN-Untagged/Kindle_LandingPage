@@ -32,6 +32,13 @@
                 <div class="form_container">
                     <h1>Register</h1>
                     <form id="registerForm" method="post" action="#">
+                        <label>Profile Photo</label>
+                        <input name="photo" id="photo" type="file" placeholder="Upload" accept="image/*"/>
+                        <div>
+                            <small class = "loader" id="loader" hidden></small>
+                            <small id="loader-message" hidden>Uploading file.</small>
+                        </div>
+                        
                         <label>Name</label>
                         <input name= "name" type="text" required/>
                         <label>Contact Number</label>
@@ -44,9 +51,8 @@
                         <label>Confirm Password</label>
                         <input name= "cpassword" id= "cpassword" type="password" required/>
                         <br><small style="color: red;" id="password-alert"></small>
-                        <label>Profile Photo</label>
-                        <input name="photo" id="photo" type="file" placeholder="Upload" accept="image/*"/><br>
-                        <button type="submit" id="sign-up">Sign Up</button>
+                        
+                        <br><button type="submit" id="sign-up">Sign Up</button>
                         <p>Already have an account?<a onclick="FlipToRegister()">Login here!</a></p>
                     </form>
                 </div>

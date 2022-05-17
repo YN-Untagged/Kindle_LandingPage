@@ -114,15 +114,9 @@ rform.addEventListener('submit', function(event){
         //Save Profile picture if found
         if(rform["photo"].files.length > 0)
         {
-            reader.readAsDataURL(rform["photo"].files[0]); 
-
-            reader.onload = GetPicSrc();
-            
-            function GetPicSrc(){
-                if(reader.result)
-                    pic = reader.result;
-            };
+            pic = localStorage.getItem("pic");
         }
+        
         //Add user
         let newUser = {
             name: rform["name"].value, 
@@ -146,6 +140,29 @@ rform.addEventListener('submit', function(event){
 
     }
 
+});
+
+const input_file = document.getElementById("photo"), 
+loader = document.getElementById("loader"),
+message = document.getElementById("loader-message"),
+btn = document.getElementById("sign-up");
+
+input_file.addEventListener("change", function(){
+
+    loader.style.display = "block";
+    message.style.display = "block";
+    btn.disabled = true;
+
+    let reader = new FileReader();
+    reader.readAsDataURL(this.files[0]);
+
+    reader.onload = function(){
+        localStorage.setItem("pic", reader.result);
+        message.innerHTML = "File successfully uploaded.";
+        message.style.color = "green";
+        btn.disabled = false;
+        loader.style.display = "none";
+    };
 });
 
 

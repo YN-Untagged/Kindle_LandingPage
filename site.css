@@ -304,12 +304,19 @@ input{
 .panel, .row {
     display:flex;
     width: fit-content;
-    overflow-x: scroll;
     width: 100%;
     flex-direction: row;
     scroll-behavior: smooth;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none; /*Firefox*/
+}
+
+.panel{
+    overflow-x: hidden;
+}
+
+.row {
+    overflow-x: scroll;
 }
 
 .panel::-webkit-scrollbar,.row::-webkit-scrollbar {
@@ -417,6 +424,27 @@ label{
     background-color: rgb(144, 233, 144);
     color:white;
 }
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid var(--yellow);
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 /********************************************************************************************************************************************/
 /* RESPONSIVE*/
