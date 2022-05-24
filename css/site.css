@@ -17,9 +17,26 @@ h1{
     font-weight: 800;
     font-size: 35px;
 }
+h2{
+    font-weight: 700;
+    font-size: 30px;
+}
+
+h3{
+    font-weight: 600;
+    font-size:20px
+}
 
 a {
     padding: 10px;
+    text-decoration-style: none;
+    cursor: pointer;
+    color:black;
+}
+
+a:hover, a:focus{
+    color: var(--yellow);
+    text-decoration-style: none;
 }
 
 input{
@@ -28,7 +45,7 @@ input{
     width: 300px;
 }
 
-.container{
+.m-container{
     display: block;
 }
 
@@ -70,7 +87,7 @@ input{
 }
 
 .logo_container{
-    bottom: 30px;
+    bottom: 0;
     position: relative;
     align-items: center;
     width: 100%;
@@ -86,12 +103,12 @@ input{
 
 /*Main Page*/
 .main_page{
-    width:75%;
+    width:80%;
     height: 100%;
     float: right;
     top: 0;
     right:0;
-    padding-left: 35px;
+    padding-left: 2px;
 }
 
 .top_nav{
@@ -108,7 +125,7 @@ input{
     width: 30%;
     height:fit-content;
     margin: 0 0;
-    padding: 5px 0 0 0;
+    padding: 25px 10px 0 0;
 }
 
 .logo h1{
@@ -122,12 +139,13 @@ input{
 
 .toggle_btn{
     padding-top: 20px;
+    display:none;
 }
 
 .nav_tabs{
     width: 65%;
     text-align: right;
-    padding-top: 30px;
+    padding-top: 25px;
 }
 
 .search_bar{
@@ -138,11 +156,7 @@ input{
     padding: 10px; 
 }
 
-.links :hover, .links:focus{
-    color: var(--yellow)
-}
-
-.column{   
+.m-column{   
     min-width: 25%;
 }
 
@@ -194,12 +208,12 @@ input{
     padding: 20px 20px;
 } 
 
-.authors_card .row{
+.authors_card .m-row{
     padding: 20px 15px;
 
 }
 
-.authors_card .row small{
+.authors_card .m-row small{
     padding-left: 25px;
 }
 
@@ -310,7 +324,7 @@ input{
     right: 0;
 }
 
-.panel, .row {
+.m-panel, .m-row {
     display:flex;
     width: fit-content;
     width: 100%;
@@ -320,20 +334,20 @@ input{
     scrollbar-width: none; /*Firefox*/
 }
 
-.panel{
+.m-panel{
     overflow-x: hidden;
 }
 
-.row {
+.m-row {
     overflow-x: scroll;
     overflow-y: hidden;
 }
 
-.panel::-webkit-scrollbar,.row::-webkit-scrollbar {
+.m-panel::-webkit-scrollbar,.m-row::-webkit-scrollbar {
     display: none;
 }
 
-.panel, .row::after{
+.m-panel, .m-row::after{
     display: inline-flex;
     clear:both;
 }
@@ -497,7 +511,7 @@ label{
         padding: 5px 15px;
     }
 
-    .column{
+    .m-column{
         min-width: 30%;
     }
     .nav_content{
@@ -533,7 +547,7 @@ label{
     }
 
     .side_nav{
-        height: 1000px;
+        height: 100%;
         overflow: scroll;
 
     }
@@ -551,15 +565,15 @@ label{
         display: none;
     }
 
-    .logo i, .toggle_btn, .search_bar, .nav_content span, .panel:after{
+    .logo i, .toggle_btn, .search_bar, .nav_content span, .m-panel:after{
         display: block;
     }
 
-    .panel, .row, .side_nav, .main_page, .flip-card{
+    .m-panel, .m-row, .side_nav, .main_page, .flip-card{
         width: 100%;
     }
 
-    .panel {
+    .m-panel {
         flex-direction: column;
     }
 
@@ -602,7 +616,7 @@ label{
         width: 100%
     }
     
-    .row{
+    .m-row{
         overflow: scroll;
         padding: 0;
     }
