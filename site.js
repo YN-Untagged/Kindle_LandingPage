@@ -2,7 +2,7 @@ const profilesUrl = "images/user_images/";
 const booksUrl = "images/site_images/";
 
 
-let userProfiles = [{ name: "Dummy", email: "dummy@gmail.com", phone : "+2789345236", photo: profilesUrl + "profile.jpg", password :"pass123" }];
+let userProfiles = [{ name: "Dummy", email: "dummy@gmail.com", phone : "+27893452360", photo: profilesUrl + "profile.jpg", password :"pass123" }];
 
 const purchasedBooks = [
     {name : "The Island of Doctor Moreau", cover: "the_Island_Of_DrMoreau.jpg", pages: 95, chapter: 4, read: true},
@@ -36,7 +36,12 @@ const books = [
 /// Starts here
 ///
 
-let sessionUser;
+function LoadDummyUsers() {
+    if(!"users" in localStorage || localStorage.getItem("users") === null){
+        localStorage.setItem("users", JSON.stringify(userProfiles));
+    }
+};
+
 
 //Login Function
 let lform = document.getElementById("loginForm");
@@ -76,7 +81,7 @@ lform.addEventListener('submit', function(event){
 
     if(found)
     {
-        if(lform["password"].value == sessionUser["password"])
+        if(lform["password"].value === (JSON.parse(sessionStorage.getItem("user"))).password)
         {
             //redirect to landing page
             window.location.href = "index.html";
@@ -126,7 +131,11 @@ rform.addEventListener('submit', function(event){
             password : rform["password"].value 
         }
 
-        userProfiles.push(newUser);
+        //Get stored users, add new user and save users in localStorage
+        const users = JSON.parse(localStorage.getItem("users"));
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+
         rform.reset();
         message.className = "success_message";
         message.innerHTML = 'Registration successful. Login to your account <a class="yellow" onclick="FlipToRegister();">Login here!</a> ';
@@ -169,18 +178,13 @@ input_file.addEventListener("change", function(){
 //Search for user account
 function FindUserAccount( email ){
 
+    var storedUsers = JSON.parse(localStorage.getItem("users"));
     //find corresponding user account
-    for(let i = 0; i < userProfiles.length; i++)
+    for(let i = 0; i < storedUsers.length; i++)
     {
-        if(userProfiles[i]["email"] == email)
+        if(storedUsers[i].email == email)
         { 
-            //user account found
-            sessionStorage.setItem("name", userProfiles[i]["name"]);
-            sessionStorage.setItem("photo", userProfiles[i]["photo"]);
-            sessionStorage.setItem("password", userProfiles[i]["password"]);
-
-            sessionUser = userProfiles[i];
-            
+            sessionStorage.setItem("user", JSON.stringify(storedUsers[i]));
             return true;
         }
     }
@@ -284,11 +288,11 @@ function LoadBooks(){
 
 function LoadDetails()
 {
-    if("name" in sessionStorage)
+    if("user" in sessionStorage)
     {
         //load user info
-        document.getElementById('profile-pic').src = sessionStorage.getItem("photo");
-        document.getElementById('username').innerText = sessionStorage.getItem("name");
+        document.getElementById('profile-pic').src = (JSON.parse(sessionStorage.getItem("user"))).photo;
+        document.getElementById('username').innerText = (JSON.parse(sessionStorage.getItem("user"))).name;
 
         //load books
         LoadBooks();
@@ -346,6 +350,5 @@ function ShowDropDown(){
     {
         dropdown.style.display = "none";
         icon.className = "fas fa-bars fa-2x";
-    }
-        
+    }       
 }

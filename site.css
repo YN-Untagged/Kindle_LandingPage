@@ -397,7 +397,7 @@ label{
     perspective: 1000px;
     margin-left: 25%;
     margin-top: 2%;
-    min-height: 850px;
+    min-height: 900px;
     width: 50%;
     background-color: white;
     display: block;
@@ -487,8 +487,8 @@ label{
     }
 
     .profile_img{
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
     }
 }
 
