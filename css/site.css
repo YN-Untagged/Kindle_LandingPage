@@ -474,6 +474,25 @@ label{
     100% { transform: rotate(360deg); }
   }
 
+/*Modal styling*/
+.modal-content {
+    margin:0 0;
+    padding:0 0;
+}
+.modal_row{
+    width: 100%;
+    display: inline-block; 
+}
+
+.row-cols-xl-2{
+    width: 50%;
+}
+
+.modal_image{
+    width: 100%;
+    height: auto;
+}
+
 /********************************************************************************************************************************************/
 /* RESPONSIVE*/
 /*media queries*/

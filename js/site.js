@@ -1,8 +1,8 @@
 const profilesUrl = "images/user_images/";
 const booksUrl = "images/site_images/";
 
-
-let userProfiles = [{ name: "Dummy", email: "dummy@gmail.com", phone : "+27893452360", photo: profilesUrl + "profile.jpg", password :"pass123" }];
+let newCart = new Array();
+let userProfiles = [{ name: "Dummy", email: "dummy@gmail.com", phone : "+27893452360", photo: profilesUrl + "profile.jpg", password :"pass123" , cart: newCart}];
 
 const purchasedBooks = [
     {name : "The Island of Doctor Moreau", cover: "the_Island_Of_DrMoreau.jpg", pages: 95, chapter: 4, read: true},
@@ -18,16 +18,16 @@ const purchasedBooks = [
 ];
 
 const books = [
-    {name : "Against Heresies", cover: "against_heresies.jpg", author: "Irenaeus of Lyons", genre: "Theology"},
-    {name : "The Day I Met BigFoot" , cover: "the_day_i_met_bigfoot.jpg" , author: "D.L. Miller", genre: "Fantacy"},
-    {name : "Dark Things I Adore", cover: "dark_things_I_adore.jpg", author: "Katie Lattari", genre: "Thriller"},
-    {name : "Viral", cover: "viral.jpeg", author: "Robin Cook" , genre: "Mystery" },
-    {name : "A Brush with Love: A Novel", cover: "a_brush_with_love.jpg", author: "Mazey Eddings", genre: " Fiction"},
-    {name : "Chicken Pox", cover: "chicken_pox.jpg", author: "Bernard Demaere", genre: "Children's Liteture"},
-    {name : "The House Across the Lake", cover: "the_house_across_the_lake.jpg", author:"Riley Sager" , genre: "Mystery"},
-    {name : "The Red Palace", cover:"the_red_palace.jpg" , author: "June Hur" , genre:  "Historical Fiction"},
-    {name : "Kaikeyi", cover: "kaikeyi.jpg" , author: "Vaishnavi Patel" , genre: "Fantasy"},
-    {name : "The Book of Cold Cases", cover: "the_book_of_cold_cases.jpg", author: "Simone St. James", genre: "Thriller"}
+    {id: 0, name : "Against Heresies", cover: "against_heresies.jpg", author: "Irenaeus of Lyons", genre: "Theology", price: 251.59 , summary: `Irenaeus of Lyons wrote about and refuted many heresies in his books, including the idea that the resurrection would only be a spiritual resurrection and that the physical human body would have no part in it. His main argument is, if the body is not important, then why did Jesus take on a body of flesh and become human as well as heal many people's bodily afflictions? Irenaeus first argues against those who believe that Christ only "appeared" as man but really did not have flesh and blood as a real human being. He argues that if the Word had not become flesh, we would not have been able to hear and understand His teachings. In the past, when God wanted to speak to His people Israel, He would speak through the prophets who would spread the word with the community. God would only speak with one man individually. However, God in the form of Jesus was able to teach and speak to large groups of people directly. This is because He was truly God and truly man.`},
+    {id: 1, name : "The Day I Met BigFoot" , cover: "the_day_i_met_bigfoot.jpg" , author: "D.L. Miller", genre: "Fantacy", price: 120.10, summary: `From D.L. Miller, your favorite mysterious creature is back in this sweet short story about friendship! Normally shy and reclusive, BigFoot spends his days in the deep dark woods, rarely spotted by humankind. But one day while walking along a wooded path, a friendly human child finds BigFoot and encourages him to stop hiding. After telling BigFoot he should be brave and proud of who he is and that it's okay to be different, a new friendship is formed and future adventures together will be had.` },
+    {id: 2, name : "Dark Things I Adore", cover: "dark_things_I_adore.jpg", author: "Katie Lattari", genre: "Thriller", price: 89.05, summary: `A provocative must-read of feminist fury about the inhuman lengths some take for success... or justice. Three campfire secrets. Two witnesses. One dead in the trees. And the woman, thirty years later, bent on making the guilty finally pay. 1988. A group of outcasts gather at a small, prestigious arts camp nestled in the Maine woods. They're the painters: bright, hopeful, teeming with potential. But secrets and dark ambitions rise like smoke from a campfire, and the truths they tell will come back to haunt them in ways more deadly than they dreamed.` },
+    {id: 3, name : "Viral", cover: "viral.jpeg", author: "Robin Cook" , genre: "Mystery", price: 90.37, summary: `` },
+    {id: 4, name : "A Brush with Love: A Novel", cover: "a_brush_with_love.jpg", author: "Mazey Eddings", genre: " Fiction", price: 340.00 , summary: `` },
+    {id: 5, name : "Chicken Pox", cover: "chicken_pox.jpg", author: "Bernard Demaere", genre: "Children's Liteture", price: 148.20 , summary: `` },
+    {id: 6, name : "The House Across the Lake", cover: "the_house_across_the_lake.jpg", author:"Riley Sager" , genre: "Mystery", price: 181.78 , summary: `` },
+    {id: 7, name : "The Red Palace", cover:"the_red_palace.jpg" , author: "June Hur" , genre:  "Historical Fiction", price: 269.48 , summary: `` },
+    {id: 8, name : "Kaikeyi", cover: "kaikeyi.jpg" , author: "Vaishnavi Patel" , genre: "Fantasy", price: 104.99 , summary: `` },
+    {id: 9, name : "The Book of Cold Cases", cover: "the_book_of_cold_cases.jpg", author: "Simone St. James", genre: "Thriller", price: 135.04 , summary: `` }
 ];
 
 
@@ -38,7 +38,7 @@ const books = [
 
 function LoadDummyUsers() {
     if(!"users" in localStorage || localStorage.getItem("users") === null){
-        localStorage.setItem("users", JSON.stringify(userProfiles));
+        StoreUsers(userProfiles);
     }
 };
 
@@ -128,13 +128,14 @@ rform.addEventListener('submit', function(event){
             email: rform["email"].value, 
             phone : rform["phone"].value, 
             photo: pic, 
-            password : rform["password"].value 
+            password : rform["password"].value,
+            cart: newCart
         }
 
         //Get stored users, add new user and save users in localStorage
-        const users = JSON.parse(localStorage.getItem("users"));
+        const users = RetrieveUsers();
         users.push(newUser);
-        localStorage.setItem("users", JSON.stringify(users));
+        StoreUsers(users);
 
         rform.reset();
         message.className = "success_message";
@@ -178,13 +179,14 @@ input_file.addEventListener("change", function(){
 //Search for user account
 function FindUserAccount( email ){
 
-    var storedUsers = JSON.parse(localStorage.getItem("users"));
+    var storedUsers = RetrieveUsers();
     //find corresponding user account
     for(let i = 0; i < storedUsers.length; i++)
     {
         if(storedUsers[i].email == email)
         { 
             sessionStorage.setItem("user", JSON.stringify(storedUsers[i]));
+            sessionStorage.setItem("userIndex", i);
             return true;
         }
     }
@@ -272,6 +274,7 @@ function LoadBooks(){
 
         let new_card = document.createElement('div');
         new_card.className = "new_card";
+        new_card.setAttribute("onclick", `ShowBookDetails(${books[i]["id"]})`);
         new_card.innerHTML = `
         <img class="book" src="${ booksUrl + books[i]["cover"] }"/> 
         <div class="info">
@@ -285,14 +288,19 @@ function LoadBooks(){
         mainRDiv.appendChild(new_card);
     }
 }
+function LoadNavigation(){
+    
+}
 
 function LoadDetails()
 {
+    //Load Navigators;
+    LoadNavigators();
+
     if("user" in sessionStorage)
     {
         //load user info
-        document.getElementById('profile-pic').src = (JSON.parse(sessionStorage.getItem("user"))).photo;
-        document.getElementById('username').innerText = (JSON.parse(sessionStorage.getItem("user"))).name;
+        LoadUserDetails();
 
         //load books
         LoadBooks();
@@ -302,6 +310,17 @@ function LoadDetails()
     {
         window.location.href = "login.html";
     }
+}
+
+function LoadUserDetails(){
+
+    document.getElementById('profile-pic').src = (JSON.parse(sessionStorage.getItem("user"))).photo;
+    document.getElementById('username').innerText = (JSON.parse(sessionStorage.getItem("user"))).name;
+}
+
+function LoadNavigators(){
+    document.getElementById('side-nav').innerHTML = sideNav;
+    document.getElementById('top-nav').innerHTML = topNav;
 }
 
 ///
@@ -351,4 +370,14 @@ function ShowDropDown(){
         dropdown.style.display = "none";
         icon.className = "fas fa-bars fa-2x";
     }       
+}
+
+
+/*Save and Retrieve users from the localStorage*/
+function StoreUsers(users){
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+function RetrieveUsers(){
+    return JSON.parse(localStorage.getItem("users"));
 }
