@@ -476,21 +476,87 @@ label{
 
 /*Modal styling*/
 .modal-content {
-    margin:0 0;
-    padding:0 0;
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+    height:98%;
+    border: none;
 }
 .modal_row{
-    width: 100%;
+    width: inherit;
     display: inline-block; 
 }
 
 .row-cols-xl-2{
-    width: 50%;
+    width: 100%;
+}
+
+.modal_column{
+    float: left;
+    height: 854px;
+    padding: 0 0;
+}
+
+.col-2, .col-3{
+    float: left;
 }
 
 .modal_image{
     width: 100%;
-    height: auto;
+    height: 100%;
+}
+
+.btn-group{
+    width: 100%;
+    padding: 10px 10px;
+    display: inline-flex;
+    height: 100%;
+}
+
+.btn-group input, .btn-group button{
+    padding: 15px 15px;
+    border: 2px solid var(--yellow);
+    height: 100%;
+    min-width: 60px;
+}
+
+.btn-group input{
+    text-align: center;
+    height: inherit;
+    width: 60px;
+}
+
+.btn-group button{
+    margin-top: 0;
+    background-color: var(--yellow);
+    color: white;
+    
+}
+
+.btn-group button:hover, .btn-group button:focus{
+    color : var(--yellow);
+    background-color: white;
+}
+
+.col-2 .modal-header, .col-2 .modal-body, .col-2 .modal-footer{
+    width : inherit;
+}
+
+
+
+.col-2 .modal-footer{
+    padding: 0 0;
+}
+
+.modal-header .modal-row{
+    display: inline-block;
+    width: 100%;
+}
+
+/*Cart styling*/
+.cart_book{
+    width: 85px;
+    height: 100px;
+    padding-right: 20px;
 }
 
 /********************************************************************************************************************************************/
