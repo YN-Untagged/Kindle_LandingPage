@@ -29,7 +29,12 @@ let topNav = `
         <span class="search_bar"><input type="text" placeholder="Search your books"><i class="fa fa-search"></i></span>
         <a class="links">New Release<sup><i class="fas fa-circle yellow"></i></sup></a>
         <a class ="links">Featured</a>
-        <a class ="links"href="cart.html"><i class="fas fa-shopping-cart"></i><sup class="yellow circle" hidden><small id=""></small></sup></a>
+        <a class ="links" href="cart.html">
+            <i class="fas fa-shopping-cart"></i>
+            <sup><i class="badge badge-light cart_badge" id="item-count"></i></sup>
+            
+        </a>
+        
         <a class ="links" onclick="ShowHideSideNav()"><span hidden> Main Menu</span><i class="fas fa-th-large icon"></i></a>
     </div>
     </div>

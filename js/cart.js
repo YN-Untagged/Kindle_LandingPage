@@ -12,13 +12,9 @@ function ShowBookDetails(id){
     details.innerHTML = `
         <h4>${book.name}</h4>
         <h6>${book.author}</h6>
-        <p>
-            ${book.summary}
-            ${book.price}
-        </p>`;
-
-    
-
+        <p> ${book.summary}</p>
+        <p> R${book.price.toFixed(2)}<p>`;
+        
     modalDetails.show();
 }
 
@@ -68,7 +64,7 @@ aform.addEventListener('submit', function(e){
 
     let msg = document.getElementById('modal-alert');
     msg.className = "success_message";
-    msg.innerHTML = "<p>Book successfully added to cart.<a>Click here to view cart.</a></p>";
+    msg.innerHTML = "<p>Book successfully added to cart.<a href='cart.html'>Click here to view cart.</a></p>";
     
 });
 
@@ -100,7 +96,7 @@ function LoadCart(){
         });
     
         
-        total.innerHTML = `${backTo}<div> Subtotal: R ${sum} </div>`;
+        total.innerHTML = `${backTo}<div> Subtotal: R ${sum.toFixed(2)} </div>`;
         
     }
     else{
@@ -110,35 +106,46 @@ function LoadCart(){
     
 }
 
-function UpdateCart(id, rmvd){
+function UpdateCart(id, rmvd, qty){
 
     let users = RetrieveUsers(),
-    qty = document.getElementById('quantity').value;
-    index = sessionStorage.getItem('userIndex');
+    index = sessionStorage.getItem('userIndex'),
+    userCart =users[index]["cart"];
 
-    users[index]["cart"].forEach((item, indx) => {
+    userCart.forEach((item, indx) => {
         if(item.bookId === id){
             item.quantity = qty;
             if(rmvd || qty <= 0){
-                delete users[indx]["cart"][indx];
+                delete userCart[indx];
+
+                const filteredCart = userCart.filter(el => {
+                    return el != null;
+                });
+                userCart = filteredCart;
             }
             return;
         }
     });
 
+    users[index]["cart"] = userCart;
     StoreUsers(users);
-    window.reload();
+    window.location.reload();
 }
 
 function ChangeQuantity(e, form){
     e.preventDefault();
+
+    //Get bookId and quantity value from form.
+    var qty = parseInt(form['quantity'].value);
+    var id = parseInt(form['id'].value);
+
     if(e.target.value === "+"){
-        alert(e.target.value);
-        alert(parseInt(form['quantity'].value) + 1);
+        alert(qty + 1);
+        UpdateCart( id, false, qty + 1);
     }
     else{
-        alert(e.target.value);
-        alert(parseInt(form['quantity'].value) - 1);
+        alert(qty - 1);
+        UpdateCart( id, false, qty - 1);
     }
     
 }
@@ -159,6 +166,7 @@ function AddListItem(item){
         </div>
         <div class="col-3">
             <form onclick="ChangeQuantity(event, this);">
+                <input type="hidden" name="id" value="${item.bookId}">
                 <div class="btn-group">
                     <input type="submit" name="subtract" value="-">
                     <input name="quantity" type="number" class="modal_input" min="0" value="${item.quantity}" required>
@@ -168,8 +176,8 @@ function AddListItem(item){
         </div>
         <div class="col-2">
             <div class="row justify-content-between">
-                <span>R ${books[item.bookId]["price"]}</span>
-                <a onclick="UpdateCart(${item.bookId}, true);"><i class="fas fa-times"></i></a>
+                <span>R ${books[item.bookId]["price"].toFixed(2)}</span>
+                <a onclick="UpdateCart(${item.bookId}, true,0);"><i class="fas fa-times"></i></a>
             </div>
         </div>
     `;
