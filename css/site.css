@@ -62,12 +62,20 @@ input{
     position: fixed;
 }
 
+.authors_card, .profile_card, .book, .purchased_info, .reading_info
+{
+    border-radius: 20px;
+}
+
 .profile_card{
     text-align: center;
     background-color: rgb(241, 223, 202);
     background-image: linear-gradient(to bottom right,rgb(228, 226, 226), rgb(241, 223, 202));
     padding: 25px 25px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
+
 .profile_img
 {
     border-radius: 20px;
@@ -210,6 +218,8 @@ input{
     width: 100%;
     height: 430px;
     padding: 20px 20px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 } 
 
 .authors_card .m-row{
@@ -224,11 +234,6 @@ input{
 .author_pic{
     border-radius: 50%;
     height: 80px
-}
-
-.authors_card, .profile_card, .book, .purchased_info, .reading_info
-{
-    border-radius: 20px;
 }
 
 .book{
@@ -499,7 +504,7 @@ label{
 
 .modal_column{
     float: left;
-    height: 854px;
+    height: 880px;
     padding: 0 0;
 }
 

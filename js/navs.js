@@ -20,9 +20,9 @@ let sideNav = `
     </div>`;
 
 let topNav = `
-    <div class = "logo">
+    <a class = "logo" href="index.html">
         <h1><i class="fab fa-kickstarter yellow fa-2x"></i><span class="heading">Kindle<span class="yellow">.</span></span></h1>
-    </div>
+    </a>
     <div class="nav_tabs right">
     <a onclick="ShowDropDown();" class="toggle_btn"><i class="fas fa-bars fa-2x" id="toggle-icon"></i></a>
     <div class="nav_content" id="dropdown-list">

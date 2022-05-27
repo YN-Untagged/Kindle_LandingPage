@@ -11,10 +11,11 @@ function ShowBookDetails(id){
     let details = document.getElementById('details');
     details.innerHTML = `
         <h4>${book.name}</h4>
-        <h6>${book.author}</h6>
+        <h6>${book.author}  <small class="category">${ book.genre }</small></h6>
+        <small> ISBN: ${book.isbn} </small>
         <p> ${book.summary}</p>
         <p> R${book.price.toFixed(2)}<p>`;
-        
+
     modalDetails.show();
 }
 
@@ -62,9 +63,11 @@ aform.addEventListener('submit', function(e){
     StoreUsers(users);
     aform.reset();
 
-    let msg = document.getElementById('modal-alert');
+    let msg = document.getElementById('modal-alert'),
+    num = document.getElementById('item-count');
     msg.className = "success_message";
     msg.innerHTML = "<p>Book successfully added to cart.<a href='cart.html'>Click here to view cart.</a></p>";
+    num.innerText = parseInt(num.innerText) + 1
     
 });
 
@@ -84,7 +87,7 @@ function LoadCart(){
     cartList = document.getElementById('cart-container'),
     userCart = users[index]["cart"];
     var total = document.createElement('div'),
-    backTo = `<a href="index.html"><i class="fas fa-long-arrow-alt-left"></i>Continue shopping</a>`;
+    backTo = `<a href="index.html"><i class="fas fa-long-arrow-alt-left"></i> Continue shopping</a>`;
     total.className = "list-group-item justify-content-between d-flex align-items-center";
 
     if(userCart.length > 0)
@@ -96,7 +99,7 @@ function LoadCart(){
         });
     
         
-        total.innerHTML = `${backTo}<div> Subtotal: R ${sum.toFixed(2)} </div>`;
+        total.innerHTML = `${backTo}<div><b>Subtotal:</b> R ${sum.toFixed(2)} </div>`;
         
     }
     else{
@@ -136,15 +139,14 @@ function ChangeQuantity(e, form){
     e.preventDefault();
 
     //Get bookId and quantity value from form.
-    var qty = parseInt(form['quantity'].value);
-    var id = parseInt(form['id'].value);
+    var qty = parseInt(form['quantity'].value),
+    id = parseInt(form['id'].value),
+    submitBtn = e.target.value;
 
-    if(e.target.value === "+"){
-        alert(qty + 1);
+    if(submitBtn === "+"){
         UpdateCart( id, false, qty + 1);
     }
-    else{
-        alert(qty - 1);
+    else if(submitBtn === "-"){
         UpdateCart( id, false, qty - 1);
     }
     
@@ -159,8 +161,9 @@ function AddListItem(item){
             <div class="row align-items-center">
                 <img class="cart_book" src="${booksUrl + books[item.bookId]['cover']}">
                 <div>
-                    <h6>${books[item.bookId]["name"]}</h6>
-                    <small>${books[item.bookId]["author"]}</small>
+                    <h4>${books[item.bookId]["name"]}</h4>
+                    <p>${books[item.bookId]["author"]}</p>
+                    <small>Price per Item: R${books[item.bookId]["price"].toFixed(2)}</small>
                 </div>
             </div>
         </div>
@@ -169,15 +172,15 @@ function AddListItem(item){
                 <input type="hidden" name="id" value="${item.bookId}">
                 <div class="btn-group">
                     <input type="submit" name="subtract" value="-">
-                    <input name="quantity" type="number" class="modal_input" min="0" value="${item.quantity}" required>
+                    <input name="quantity" type="number" class="modal_input" min="0" value="${item.quantity}" required readonly>
                     <input type="submit" name="add" value="+">
                 </div>
             </form>
         </div>
         <div class="col-2">
             <div class="row justify-content-between">
-                <span>R ${books[item.bookId]["price"].toFixed(2)}</span>
-                <a onclick="UpdateCart(${item.bookId}, true,0);"><i class="fas fa-times"></i></a>
+                <span>R ${(books[item.bookId]["price"] * item.quantity).toFixed(2)}</span>
+                <a onclick="UpdateCart(${item.bookId}, true,0);" data-toggle="tooltip" title="Delete Item"><i class="fas fa-times"></i></a>
             </div>
         </div>
     `;
