@@ -160,6 +160,25 @@ function ChangeQuantity(e, form){
     
 }
 
+function EmptyCart(){
+    swal({
+        title: "Empty Cart?",
+        text: "Do you want to empty your cart? Your cart will be empty and cart items can never be retrieved.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((emt) => {
+        if (emt) {
+           const users = RetrieveUsers(),
+           i = parseInt(sessionStorage.getItem('userIndex'));
+           users[i]["cart"] = [];
+           StoreUsers(users);
+           window.location.reload();
+        } 
+      });
+}
+
 function AddListItem(item){
 
     var listItem = document.createElement('div');

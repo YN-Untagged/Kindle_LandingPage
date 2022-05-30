@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
-    
+    <!--Sweet Alerts-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
@@ -31,6 +32,10 @@
 
             <div class="main_container">
                 <div class="list-group list-group-flush" id="cart-container">
+                    <div class="list-group-item justify-content-between d-flex align-items-center">
+                        <h1>Cart</h1>
+                        <button type="button" class="btn btn-danger" onclick="EmptyCart();">Clear Cart</button>
+                    </div>
                     <!--Cart Items goes Here-->
                 </div>
             </div>
