@@ -30,12 +30,12 @@ let topNav = `
         <a class="links">New Release<sup><i class="fas fa-circle yellow"></i></sup></a>
         <a class ="links">Featured</a>
         <a class ="links" href="cart.html">
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-shopping-cart icon"></i>
+            <span>Cart</span>
             <sup><i class="badge badge-light cart_badge" id="item-count"></i></sup>
-            
         </a>
         
-        <a class ="links" onclick="ShowHideSideNav()"><span hidden> Main Menu</span><i class="fas fa-th-large icon"></i></a>
+        <a class ="links" onclick="ShowHideSideNav()"><span> Main Menu</span><i class="fas fa-th-large icon"></i></a>
     </div>
     </div>
 `;

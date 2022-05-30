@@ -1,6 +1,7 @@
 let modalDetails = new bootstrap.Modal(document.getElementById('details-modal'), {});
 
 function ShowBookDetails(id){
+    
     //find the book
     let book = books[id];
 
@@ -10,11 +11,12 @@ function ShowBookDetails(id){
 
     let details = document.getElementById('details');
     details.innerHTML = `
+        <img src="${booksUrl +book.cover}" alt="book cover" class="book modal_image_small">
         <h4>${book.name}</h4>
         <h6>${book.author}  <small class="category">${ book.genre }</small></h6>
         <small> ISBN: ${book.isbn} </small>
         <p> ${book.summary}</p>
-        <p> R${book.price.toFixed(2)}<p>`;
+        <strong> — R${book.price.toFixed(2)}</strong>`;
 
     modalDetails.show();
 }
@@ -63,17 +65,23 @@ aform.addEventListener('submit', function(e){
     StoreUsers(users);
     aform.reset();
 
-    let msg = document.getElementById('modal-alert'),
-    num = document.getElementById('item-count');
-    msg.className = "success_message";
-    msg.innerHTML = "<p>Book successfully added to cart.<a href='cart.html'>Click here to view cart.</a></p>";
+    swal("Added To Cart!", "Book has been successfully added to cart.", "success", {
+        buttons: ["Back", "View Cart"],
+    })
+    .then((goToCart)=>{
+        if(goToCart){
+            window.location.href = "cart.html";
+        }   
+    });
+
+    let num = document.getElementById('item-count');
     num.innerText = parseInt(num.innerText) + 1
     
 });
 
 function LoadCart(){
 
-    if(!"user" in sessionStorage){
+    if(sessionStorage.getItem("user") === null){
         window.location.href = "login.html";
     }
 
@@ -110,7 +118,7 @@ function LoadCart(){
 }
 
 function UpdateCart(id, rmvd, qty){
-
+    //Get user Cart
     let users = RetrieveUsers(),
     index = sessionStorage.getItem('userIndex'),
     userCart =users[index]["cart"];
@@ -157,7 +165,7 @@ function AddListItem(item){
     var listItem = document.createElement('div');
     listItem.className = "list-group-item justify-content-between d-flex align-items-center";
     listItem.innerHTML = `
-        <div class="col-7">
+        <div class="col-lg-7">
             <div class="row align-items-center">
                 <img class="cart_book" src="${booksUrl + books[item.bookId]['cover']}">
                 <div>
@@ -167,7 +175,7 @@ function AddListItem(item){
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-lg-3">
             <form onclick="ChangeQuantity(event, this);">
                 <input type="hidden" name="id" value="${item.bookId}">
                 <div class="btn-group">
@@ -177,10 +185,10 @@ function AddListItem(item){
                 </div>
             </form>
         </div>
-        <div class="col-2">
+        <div class="col-lg-2">
             <div class="row justify-content-between">
-                <span>R ${(books[item.bookId]["price"] * item.quantity).toFixed(2)}</span>
-                <a onclick="UpdateCart(${item.bookId}, true,0);" data-toggle="tooltip" title="Delete Item"><i class="fas fa-times"></i></a>
+                <a >R ${(books[item.bookId]["price"] * item.quantity).toFixed(2)}</a>
+                <a onclick="UpdateCart(${item.bookId}, true,0);" data-toggle="tooltip" title="Delete Item"><i class="far fa-trash-alt"></i></a>
             </div>
         </div>
     `;

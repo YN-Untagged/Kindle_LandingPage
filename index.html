@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -95,12 +96,12 @@
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="row-cols-xl-2" >
-                    <div class="col-2 modal_column">
+                <div class="row">
+                    <div class="col-xl-6 modal_column modal_image_container">
                         <!--Book cover image Here-->
                         <img id ="modal-img" class="modal_image" src="" alt="Book Cover">
                     </div>
-                    <div class="col-2 modal_column">
+                    <div class="col-xl-6 modal_column">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <div class="modal_row">
@@ -112,9 +113,16 @@
                                 <div class="m-container" id="details" >
                                     <!--Book details Here-->
                                 </div>
-                                <div class="row" id="modal-alert">
-                                    <!--Alert Message Here-->
+                                <div class="toast" data-autohide="false">
+                                    <div class="toast-header">
+                                      <strong class="mr-auto text-primary">Alert Message</strong>
+                                      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                                    </div>
+                                    <div class="toast-body" id="modal-alert">
+                                      <!--Alert Message Here-->
+                                    </div>
                                 </div>
+
                             </div>
                             <div class="modal-footer" valign="bottom">
                                 <div class="row">

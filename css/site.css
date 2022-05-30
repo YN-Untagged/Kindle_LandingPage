@@ -105,6 +105,7 @@ input{
 .side_logo{
     width: 200px;
 }
+
 .close{
     display: none;
 }
@@ -490,7 +491,7 @@ label{
 .modal-content {
     margin:0 0 0 0;
     padding:0 0 0 0;
-    height:98%;
+    height:100%;
     border: none;
 }
 .modal_row{
@@ -504,7 +505,7 @@ label{
 
 .modal_column{
     float: left;
-    height: 880px;
+    height: 900px;
     padding: 0 0;
 }
 
@@ -560,20 +561,15 @@ label{
     background-color: white;
 }
 
-.col-2 .modal-header, .col-2 .modal-body, .col-2 .modal-footer{
-    width : inherit;
-}
-
-
-
-.col-2 .modal-footer{
-    padding: 0 0;
-}
-
 .modal-header .modal-row{
     display: inline-block;
     width: 100%;
 }
+
+.modal_image_small, .links span{
+    display: none;
+}
+
 
 /*Cart styling*/
 .cart_badge{
@@ -590,6 +586,10 @@ label{
     width: 85px;
     height: 100px;
     padding-right: 20px;
+}
+
+.cart_item_price{
+    top: 50%;
 }
 
 /********************************************************************************************************************************************/
@@ -637,17 +637,34 @@ label{
         position: fixed;
         right: 10px;
     }
+}
 
+@media (max-width: 1199px){
+    .modal_column{
+        height: 100%;
+    }
+
+    .modal_image{
+        display: none;
+    }
+
+    .modal_image_small{
+        display: block;
+        float: left;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
 }
 
 @media  (max-width:1024px) {
-   .nav_tabs .toggle_btn, .links span{
+   .nav_tabs .toggle_btn, .links span, .modal_image_small{
        display: block;
    }
 
     .nav_content, .icon{
         display: none;
     }
+
 
     .nav_content{
         flex-direction: column;
@@ -676,6 +693,8 @@ label{
     input{
         width: 70%;
     }
+
+
     
 }
 @media (max-width: 1023px) {
@@ -726,7 +745,39 @@ label{
     .scroll_btn{
         bottom: 50%;
     }
+
+    .btn-group input{
+        min-width:40px;
+        padding: 5px 5px;
+    }
+
+    .btn-group input[type="submit"]{
+        font-size:medium;
+        padding-bottom: 7px;
+    }
+
+    
 }
+@media( max-width: 992px){
+    .list-group-item{
+        flex-direction: column;
+    }
+
+    .list-group-item .col-lg-3{
+        padding-left: 0;
+
+    }
+
+    .list-group-item .col-lg-7 .row{
+        display: inline-flex;
+        flex-direction: row;
+    }
+
+    h1, h2, h3, h4, h5, h6, p{
+        font-size: medium;
+    }
+}
+
 
 @media (max-width: 412px) {
 
