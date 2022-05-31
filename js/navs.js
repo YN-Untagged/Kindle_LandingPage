@@ -1,5 +1,5 @@
 let sideNav = `
-    <div class ="right"><i class="far fa-times-circle fa-2x close" onclick="ShowHideSideNav()"></i></div>
+    <div class ="right"><i class="far fa-times-circle fa-2x close_btn" onclick="ShowHideSideNav()"></i></div>
     <div class="profile_card" id="profile-details">
         <img id="profile-pic" class="profile_img" src="" alt="profile image">
         <div>Welcome Back</div>
@@ -21,7 +21,7 @@ let sideNav = `
 
 let topNav = `
     <a class = "logo" href="index.html">
-        <h1><i class="fab fa-kickstarter yellow fa-2x"></i><span class="heading">Kindle<span class="yellow">.</span></span></h1>
+        <h1><i class="fab fa-kickstarter yellow fa-4x"></i><span class="heading">Kindle<span class="yellow">.</span></span></h1>
     </a>
     <div class="nav_tabs right">
     <a onclick="ShowDropDown();" class="toggle_btn"><i class="fas fa-bars fa-2x" id="toggle-icon"></i></a>
