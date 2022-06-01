@@ -64,8 +64,13 @@ aform.addEventListener('submit', function(e){
     
     StoreUsers(users);
     aform.reset();
+    let num = document.getElementById('item-count');
+    num.innerText = parseInt(num.innerText) + 1;
 
-    swal("Added To Cart!", "Book has been successfully added to cart.", "success", {
+    swal({
+        title:"Added To Cart!", 
+        text: "Book has been successfully added to cart.",
+        icon: "success",
         buttons: ["Back", "View Cart"],
     })
     .then((goToCart)=>{
@@ -73,9 +78,6 @@ aform.addEventListener('submit', function(e){
             window.location.href = "cart.html";
         }   
     });
-
-    let num = document.getElementById('item-count');
-    num.innerText = parseInt(num.innerText) + 1
     
 });
 
@@ -100,6 +102,8 @@ function LoadCart(){
 
     if(userCart.length > 0)
     {
+        document.getElementById('clear-btn').hidden = false;
+
         userCart.forEach(item => {
             var cartItem = AddListItem(item);
             cartList.append(cartItem);
@@ -118,6 +122,7 @@ function LoadCart(){
 }
 
 function UpdateCart(id, rmvd, qty){
+
     //Get user Cart
     let users = RetrieveUsers(),
     index = sessionStorage.getItem('userIndex'),
@@ -155,9 +160,34 @@ function ChangeQuantity(e, form){
         UpdateCart( id, false, qty + 1);
     }
     else if(submitBtn === "-"){
-        UpdateCart( id, false, qty - 1);
+        //UpdateCart( id, false, qty - 1);
+        AlertBeforeDelete(id, false, qty - 1);
     }
     
+}
+
+function AlertBeforeDelete(id, rmvd, qty){
+    var text = "Item will be deleted from cart. Do you want to remove item from your cart?";
+
+    if(!rmvd && qty === 0){
+        text = "Quantity is below the minimum of one. This item will be removed from cart. Do you want to remove item?";
+    }
+    else if(!rmvd && qty > 0){
+        return UpdateCart( id, rmvd, qty);
+    }
+
+    swal({
+        title: "Delete Item?",
+        text: text,
+        icon: "warning",
+        buttons: ["Cancel", "Yes. Delete item."],
+        dangerMode: true,
+    })
+    .then((d) => {
+        if(d){
+            UpdateCart(id, rmvd, qty);
+        }
+    });
 }
 
 function EmptyCart(){
@@ -167,8 +197,8 @@ function EmptyCart(){
         icon: "warning",
         buttons: true,
         dangerMode: true,
-      })
-      .then((emt) => {
+    })
+    .then((emt) => {
         if (emt) {
            const users = RetrieveUsers(),
            i = parseInt(sessionStorage.getItem('userIndex'));
@@ -176,7 +206,7 @@ function EmptyCart(){
            StoreUsers(users);
            window.location.reload();
         } 
-      });
+    });
 }
 
 function AddListItem(item){
@@ -207,7 +237,7 @@ function AddListItem(item){
         <div class="col-lg-2">
             <div class="row justify-content-between">
                 <a >R ${(books[item.bookId]["price"] * item.quantity).toFixed(2)}</a>
-                <a onclick="UpdateCart(${item.bookId}, true,0);" data-toggle="tooltip" title="Delete Item"><i class="far fa-trash-alt"></i></a>
+                <a onclick="AlertBeforeDelete(${item.bookId}, true,0);" data-toggle="tooltip" title="Delete Item"><i class="far fa-trash-alt"></i></a>
             </div>
         </div>
     `;

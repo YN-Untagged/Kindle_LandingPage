@@ -5,16 +5,16 @@ let newCart = new Array();
 let userProfiles = [{ name: "Dummy", email: "dummy@gmail.com", phone : "+27893452360", photo: profilesUrl + "profile.jpg", password :"pass123" , cart: newCart}];
 
 const purchasedBooks = [
-    {name : "The Island of Doctor Moreau", cover: "the_Island_Of_DrMoreau.jpg", pages: 95, chapter: 4, read: true},
-    {name : " The Hunger Games", cover: "The_Hunger_Games.jpg", pages: 25, chapter: 1, read: true},
-    {name : "Against All Odds: Memoirs of Resilience, Determination, and Luck Amidst Hardship for an African Girl Child in Her Passionate Pursuit for Education", cover: "against_all_odds.jpg", pages: 60, chapter: 3, read: true},
-    {name : "Brave New World", cover: "brave_new_world.jpg", pages: 0, chapter: 2, read:true},
-    {name : "Gold Diggers", cover: "gold_diggers.jpg", pages: 0, chapter:0 , read: false},
-    {name : "Before She Disappeared", cover: "before_she_disappeared.jpg", pages: 0, chapter: 0, read:false},
-    {name : "My Life in Full", cover: "my_life_in_full.jpg", pages: 0, chapter: 0, read:false},
-    {name : "The Turnout", cover: "the_turnout.jpg", pages: 0, chapter: 0, read: false},
-    {name : "While Justice Sleeps", cover: "while_justice_sleeps.jpg", pages: 0, chapter: 0, read:false},
-    {name : "Wonder" , cover: "wonder.jpg", pages: 0, chapter: 0, read: false},
+    {id: 0, isbn: "9035458425458", name : "The Island of Doctor Moreau", cover: "the_Island_Of_DrMoreau.jpg", pages: 95, chapter: 4, read: true},
+    {id: 1, isbn: "9102585565648", name : " The Hunger Games", cover: "The_Hunger_Games.jpg", pages: 25, chapter: 1, read: true},
+    {id: 2, isbn: "9055485848515", name : "Against All Odds: Memoirs of Resilience, Determination, and Luck Amidst Hardship for an African Girl Child in Her Passionate Pursuit for Education", cover: "against_all_odds.jpg", pages: 60, chapter: 3, read: true},
+    {id: 3, isbn: "9872125542661", name : "Brave New World", cover: "brave_new_world.jpg", pages: 0, chapter: 2, read:true},
+    {id: 4, isbn: "9505154545145", name : "Gold Diggers", cover: "gold_diggers.jpg", pages: 0, chapter:0 , read: false},
+    {id: 5, isbn: "9789513225630", name : "Before She Disappeared", cover: "before_she_disappeared.jpg", pages: 0, chapter: 0, read:false},
+    {id: 6, isbn: "9032595448445", name : "My Life in Full", cover: "my_life_in_full.jpg", pages: 0, chapter: 0, read:false},
+    {id: 7, isbn: "9236984569525", name : "The Turnout", cover: "the_turnout.jpg", pages: 0, chapter: 0, read: false},
+    {id: 8, isbn: "9158965423690", name : "While Justice Sleeps", cover: "while_justice_sleeps.jpg", pages: 0, chapter: 0, read:false},
+    {id: 9, isbn: "9125896532535", ame : "Wonder" , cover: "wonder.jpg", pages: 0, chapter: 0, read: false},
 ];
 
 const books = [

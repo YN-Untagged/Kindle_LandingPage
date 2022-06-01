@@ -665,7 +665,6 @@ label{
         display: none;
     }
 
-
     .nav_content{
         flex-direction: column;
         position: fixed;
@@ -694,8 +693,9 @@ label{
         width: 70%;
     }
 
-
-    
+    h1, h2, h3, h4, h5, h6, p{
+        font-size:large;
+    }
 }
 @media (max-width: 1023px) {
     .logo .heading, .nav_content, .icon{
@@ -771,10 +771,6 @@ label{
     .list-group-item .col-lg-7 .row{
         display: inline-flex;
         flex-direction: row;
-    }
-
-    h1, h2, h3, h4, h5, h6, p{
-        font-size: medium;
     }
 }
 
