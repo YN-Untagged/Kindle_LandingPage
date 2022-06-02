@@ -356,7 +356,7 @@ input{
     overflow-y: hidden;
 }
 
-.m-panel::-webkit-scrollbar,.m-row::-webkit-scrollbar {
+.m-panel::-webkit-scrollbar,.m-row::-webkit-scrollbar, .search_result::-webkit-scrollbar {
     display: none;
 }
 
@@ -538,7 +538,7 @@ label{
     width: 60px;
 }
 
-.btn-group button{
+.btn-group button, .card button{
     margin-top: 0;
     background-color: var(--yellow);
     color: white;
@@ -590,6 +590,58 @@ label{
 .cart_item_price{
     top: 50%;
 }
+
+/*Search books style*/
+.search_result {
+    height: 88%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 110px;
+    left: 0;
+    overflow-y: scroll;
+    transition: 0.5s;
+    background-color: #fcf3e6;
+}
+
+.search_result i{
+    padding: 0 0;
+    margin: 0 0;
+}
+
+.card{
+    display: none;
+    width: 280px;
+    height: 550px;
+    margin: 10px 10px;
+    float: left;
+    font-size: small;    
+}
+
+.card-body{
+    text-align: center;
+    height: 200px;
+}
+
+.card-img-top{
+    height: 300px;
+}
+
+.card button{
+    padding: 0 0;
+    margin: 0 0;
+    width: 50%;
+    height: 100px;
+    bottom: 0;
+    float: left;
+    height: 50px;
+    font-weight: bold;
+}
+
+.button_holder{
+    bottom: 0px
+}
+
 
 /********************************************************************************************************************************************/
 /* RESPONSIVE*/

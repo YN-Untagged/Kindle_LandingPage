@@ -14,7 +14,7 @@ const purchasedBooks = [
     {id: 6, isbn: "9032595448445", name : "My Life in Full", cover: "my_life_in_full.jpg", pages: 0, chapter: 0, read:false},
     {id: 7, isbn: "9236984569525", name : "The Turnout", cover: "the_turnout.jpg", pages: 0, chapter: 0, read: false},
     {id: 8, isbn: "9158965423690", name : "While Justice Sleeps", cover: "while_justice_sleeps.jpg", pages: 0, chapter: 0, read:false},
-    {id: 9, isbn: "9125896532535", ame : "Wonder" , cover: "wonder.jpg", pages: 0, chapter: 0, read: false},
+    {id: 9, isbn: "9125896532535", name : "Wonder" , cover: "wonder.jpg", pages: 0, chapter: 0, read: false},
 ];
 
 const books = [
@@ -29,6 +29,7 @@ const books = [
     {id: 8, isbn: "9135976849523", name : "Kaikeyi", cover: "kaikeyi.jpg" , author: "Vaishnavi Patel" , genre: "Fantasy", price: 104.99 , summary: `“I was born on the full moon under an auspicious constellation, the holiest of positions — much good it did me.”<br>So begins Kaikeyi's story. The only daughter of the kingdom of Kekaya, she is raised on tales about the might and benevolence of the gods: how they churned the vast ocean to obtain the nectar of immortality, how they vanquish evil and ensure the land of Bharat prospers, and how they offer powerful boons to the devout and the wise. Yet she watches as her father unceremoniously banishes her mother, listens as her own worth is reduced to how great a marriage alliance she can secure. And when she calls upon the gods for help, they never seem to hear.<br>Desperate for some measure of independence, she turns to the texts she once read with her mother and discovers a magic that is hers alone. With this power, Kaikeyi transforms herself from an overlooked princess into a warrior, diplomat, and most favored queen, determined to carve a better world for herself and the women around her.<br>But as the evil from her childhood stories threatens the cosmic order, the path she has forged clashes with the destiny the gods have chosen for her family. And Kaikeyi must decide if resistance is worth the destruction it will wreak — and what legacy she intends to leave behind.` },
     {id: 9, isbn: "9348657912358", name : "The Book of Cold Cases", cover: "the_book_of_cold_cases.jpg", author: "Simone St. James", genre: "Thriller", price: 135.04 , summary: `The Book of Cold Cases Simone St. James 3.91 34,576 ratings4,890 reviews In 1977, Claire Lake, Oregon, was shaken by the Lady Killer.<br> Murders: Two men, seemingly randomly, were murdered with the same gun, with strange notes left behind. Beth Greer was the perfect suspect--a rich, eccentric twenty-three-year-old woman, seen fleeing one of the crimes.` }
 ];
+
 
 
 /* Registration and Login*/
@@ -288,8 +289,33 @@ function LoadBooks(){
         mainRDiv.appendChild(new_card);
     }
 }
-function LoadNavigation(){
-    
+
+function LoadSearchList(){
+    const container = document.getElementById("search-books")
+    for(var i= 0; i < books.length; i++){
+        let new_card = document.createElement('div'),
+        footerBtn = `<button onclick="ShowBookDetails(${books[i]["id"]});">Book Details</button>`;
+
+        if(!books[i].purchased){
+            footerBtn += "<button>Add To Cart</button>";
+        }
+        new_card.className = "card";
+        new_card.innerHTML = `
+            <img class="card-img-top" src="${ booksUrl + books[i].cover}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">${books[i].name}</h4>
+                <p class="card-text">
+                    <b>${books[i].author}</b><br/>
+                    ISBN: <span>${books[i].isbn}</span>
+                </p>
+                
+            </div> 
+            <div>
+            ${footerBtn}
+            <div>
+        `;
+        container.append(new_card);
+    }
 }
 
 function LoadDetails()
@@ -304,6 +330,7 @@ function LoadDetails()
 
         //load books
         LoadBooks();
+        LoadSearchList();
 
     }
     else
@@ -393,4 +420,55 @@ function StoreUsers(users){
 
 function RetrieveUsers(){
     return JSON.parse(localStorage.getItem("users"));
+}
+
+/*Search for books */
+
+
+
+function SearchResults(){
+    const resultDiv = document.getElementById('search-result');
+
+    if(resultDiv.style.width === "0" || resultDiv.style.width === ""){
+        resultDiv.style.width = "100%";
+    }
+
+    const searchInput = document.getElementById('search-input'),
+    container = document.getElementById("search-books"),
+    cards = container.getElementsByClassName("card");
+    let name, author, isbn, nameValue, authorValue, isbnValue,
+    counter = 0;
+
+    const filter = searchInput.value.toUpperCase();
+
+    //Loop through all books
+    for (i = 0; i < cards.length; i++) {
+        name = cards[i].getElementsByTagName("h4")[0];
+        author = cards[i].getElementsByTagName("b")[0];
+        isbn = cards[i].getElementsByTagName("span")[0];
+
+        nameValue = name.textContent || name.innerText;
+        authorValue = author.textContent || author.innerText;
+        isbnValue = isbn.textContent || isbn.innerText; 
+
+        //If book title matches user input the display book, if not hide the book from list
+        if (nameValue.toUpperCase().indexOf(filter) > -1 || authorValue.toUpperCase().indexOf(filter) > -1  || isbnValue.toUpperCase().indexOf(filter) > -1 ) {
+            counter ++;
+            cards[i].style.display = "block";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+
+    if(counter > 0){
+        document.getElementById('search-alert').style.display = "none";
+    }
+}
+
+function OpenSearch() {
+    document.getElementById('search-result').style.width = "100%";
+}
+  
+function CloseSearch() {
+    document.getElementById('search-result').style.width = "0";
 }

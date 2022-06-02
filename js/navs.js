@@ -26,7 +26,7 @@ let topNav = `
     <div class="nav_tabs right">
     <a onclick="ShowDropDown();" class="toggle_btn"><i class="fas fa-bars fa-2x" id="toggle-icon"></i></a>
     <div class="nav_content" id="dropdown-list">
-        <span class="search_bar"><input type="text" placeholder="Search your books"><i class="fa fa-search"></i></span>
+        <span class="search_bar"><input id="search-input" onkeyup="SearchResults();" type="text" placeholder="Search your books"><i class="fa fa-search"></i></span>
         <a class="links">New Release<sup><i class="fas fa-circle yellow"></i></sup></a>
         <a class ="links">Featured</a>
         <a class ="links" href="cart.html">

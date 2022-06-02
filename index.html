@@ -23,6 +23,15 @@
     <title>Main</title>
 </head>
 <body id="landing-page" onload="LoadDetails();">
+    <div id="search-result" class="search_result">
+        <div class="close yellow" onclick="CloseSearch();"><i class="fa fa-times-circle fa-2x"></i></div>
+        <h1 class="yellow">Search results</h1>
+        <p id="search-alert"> No search results found! Please try searching for something different.</p>
+        <div id="search-books" class="container-fluid">
+            <!--Search results here-->
+        </div>
+    </div>
+
     <div class="m-container main">
         <div class="side_nav" id="side-nav">
             <!--Side navigator in here-->
@@ -123,7 +132,7 @@
                                         </div>  
                                     </form>
                                 </div>
-                                <a  data-dismiss="modal" class="back_btn">Back to shopping</a>
+                                <a class="btn btn-primary" data-dismiss="modal" class="back_btn">Back to shopping</a>
                             </div>
                         </div>
                     </div>

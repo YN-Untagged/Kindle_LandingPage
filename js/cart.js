@@ -89,6 +89,7 @@ function LoadCart(){
 
     LoadNavigators();
     LoadUserDetails();
+    LoadSearchList();
     ShowHideSideNav();
 
     let users = RetrieveUsers(),
