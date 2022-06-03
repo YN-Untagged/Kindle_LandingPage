@@ -60,6 +60,7 @@ input{
     left: 0;
     float: left;
     position: fixed;
+    transition: 0.5s;
 }
 
 .authors_card, .profile_card, .book, .purchased_info, .reading_info
@@ -291,7 +292,7 @@ input{
 }
 
 .info h3, .book_info h3{
-    overflow: hidden;
+    overflow: scroll;
     overflow-wrap: break-word;
     text-overflow: ellipsis;
     height: 50px;
@@ -356,7 +357,11 @@ input{
     overflow-y: hidden;
 }
 
-.m-panel::-webkit-scrollbar,.m-row::-webkit-scrollbar, .search_result::-webkit-scrollbar {
+.m-panel::-webkit-scrollbar,
+.m-row::-webkit-scrollbar, 
+.search_result::-webkit-scrollbar,
+.book_info h3::-webkit-scrollbar
+{
     display: none;
 }
 
@@ -621,6 +626,14 @@ label{
 .card-body{
     text-align: center;
     height: 200px;
+}
+
+.card-title{
+    font-size: medium;
+    font-weight: bold;
+    height: 80px;
+    overflow-wrap: break-word;
+    overflow: scroll;
 }
 
 .card-img-top{

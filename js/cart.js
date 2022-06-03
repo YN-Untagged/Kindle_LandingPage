@@ -35,11 +35,17 @@ let aform = document.getElementById('add-book-form');
 aform.addEventListener('submit', function(e){
     e.preventDefault();
 
+    let bookid = parseInt(aform["book-id"].value),
+    quan = parseInt(aform["quantity"].value);
+
+    AddToCart(bookid, quan);  
+});
+
+function AddToCart(bookid, quan){
+
     //Add item to users cart
     let userindex = parseInt(sessionStorage.getItem("userIndex"));
     let users = RetrieveUsers(),
-    bookid = parseInt(aform["book-id"].value),
-    quan = parseInt(aform["quantity"].value),
     updated = false,
     cartlength = users[userindex]["cart"].length;
 
@@ -78,8 +84,7 @@ aform.addEventListener('submit', function(e){
             window.location.href = "cart.html";
         }   
     });
-    
-});
+}
 
 function LoadCart(){
 
