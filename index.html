@@ -111,7 +111,7 @@
                     </div>
                     <div class="col-xl-6 modal_column">
                         <div class="modal-content">
-                            <div class="modal-header">
+                            <div class="modal-header" id="main-modal-details">
                                 <a type="button" class="yellow close" data-dismiss="modal"><i class="fas fa-times-circle fa-2x"></i></a>
                             </div>
                             <div class="modal-body">
@@ -120,7 +120,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <div class="row">
+                                <div class="row" id="footer">
                                     <form id="add-book-form" action="">
                                         <input name="book-id" id="book-id" type="hidden">
                                         <div class="btn-group">
@@ -140,9 +140,13 @@
             </div>
           
         </div>
-      </div>
     </div>
-
+    <div class="modal fade" id="reading-modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content" id="reading"></div>
+        </div>
+    </div>
     
 </body>
 </html>

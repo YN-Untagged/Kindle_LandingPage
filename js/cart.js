@@ -16,8 +16,8 @@ function ShowBookDetails(id){
         <h6>${book.author}  <small class="category">${ book.genre }</small></h6>
         <small> ISBN: ${book.isbn} </small>
         <p> ${book.summary}</p>
-        <strong> — R${book.price.toFixed(2)}</strong>`;
-
+        <strong> — R${book.price.toFixed(2)}</strong>
+    `;
     modalDetails.show();
 }
 

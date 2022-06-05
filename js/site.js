@@ -258,6 +258,7 @@ function LoadBooks(){
 
         let card = document.createElement('div');
         card.className = "read_card";
+        card.setAttribute("onclick", `ReadBook(${purchasedBooks[i].id})`);
 
         card.innerHTML = `
         <img class="book book_left" src="${ booksUrl + purchasedBooks[i]["cover"] }" />
@@ -482,4 +483,34 @@ function OpenSearch() {
   
 function CloseSearch() {
     document.getElementById('search-result').style.width = "0";
+}
+
+/*Read book Modal*/
+
+function ReadBook(id){
+    //find the book
+    let book = purchasedBooks[id];
+
+    //Load modal and show the details
+    let mDetails = new bootstrap.Modal(document.getElementById('reading-modal'), {});
+    let myModalContent = document.getElementById("reading");
+
+    myModalContent.innerHTML = `
+        <div class="modal-head">
+            <a type="button" class="yellow close" data-dismiss="modal"><i class="fas fa-times-circle fa-2x"></i></a>
+        </div>
+        <div class="modal-body">
+            <div>${book.name} <i class="fas fa-circle yellow"></i> ${book.author}</div>
+            <h4>Chapter ${book.chapter}</h4>
+            <p> ${book.summary}</p>
+        </div>
+        <div>
+            <div class="btn-group">
+                <button>Next</button>
+                <input type="number" id="page" value="${book.pages || 1}">
+                <button>Previous</button>
+            </div>
+        </div> 
+    `;
+    mDetails.show();
 }

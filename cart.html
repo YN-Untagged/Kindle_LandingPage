@@ -48,5 +48,55 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="details-modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-xl-6 modal_column modal_image_container">
+                        <!--Book cover image Here-->
+                        <img id ="modal-img" class="modal_image" src="" alt="Book Cover">
+                    </div>
+                    <div class="col-xl-6 modal_column">
+                        <div class="modal-content" id="main-modal-details">
+                            <div class="modal-header">
+                                <a type="button" class="yellow close" data-dismiss="modal"><i class="fas fa-times-circle fa-2x"></i></a>
+                            </div>
+                            <div class="modal-body">
+                                <div class="m-container" id="details" >
+                                    <!--Book details Here-->
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="row" id="footer">
+                                    <form id="add-book-form" action="">
+                                        <input name="book-id" id="book-id" type="hidden">
+                                        <div class="btn-group">
+                                            <button type="button" onclick="DecreaseQuantity();"><i class="fas fa-minus"></i></button>
+                                            <input name="quantity" type="number" id="quantity" class="modal_input" min="1" value="1" required>
+                                            <button type="button" onclick="IncreaseQuantity();"><i class="fas fa-plus"></i></button>
+                                            <button type="button" onclick="this.style.color === 'red' ? this.style.color = 'white' : this.style.color ='red'"><i class="fas fa-heart"></i></button>
+                                            <button type="submit"> Add to Cart</button>
+                                        </div>  
+                                    </form>
+                                </div>
+                                <a class="btn btn-primary" data-dismiss="modal" class="back_btn">Back to shopping</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+
+    <div class="modal fade" id="reading-modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content" id="reading"></div>
+        </div>
+    </div>
+
 </body>
 </html>

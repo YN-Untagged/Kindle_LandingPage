@@ -292,10 +292,11 @@ input{
 }
 
 .info h3, .book_info h3{
-    overflow: scroll;
+    overflow: auto;
     overflow-wrap: break-word;
     text-overflow: ellipsis;
     height: 50px;
+    scrollbar-width: 0;
 }
 
 .info small{
